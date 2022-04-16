@@ -1,24 +1,17 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Breadcrumb";
-import { BtnText } from "../data/intro_content";
-import { CategoryName, Question } from "../data/question_content";
+import Options from "../comps/Options";
+import { qs } from "../data/question_content"
 
 export const Layout = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-center: center;
+    margin-top: 3em;
 `
 
-export const SelectionCont = styled.div`
-    width: 310px;
-    height: 50px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    margin: .8em;
-`
 export const BackButton = styled.div`
     position: absolute;
     font-style: normal;
@@ -45,6 +38,12 @@ export default function Questions() {
 
     const r = useRouter();
 
+    var { qnum } = r.query;
+
+    if (qnum === undefined) {
+        qnum = 0;
+    }
+
     return (
         <Layout>
             <BackButton
@@ -54,18 +53,57 @@ export default function Questions() {
                     }
                 }
             >Back</BackButton>
-            <SkipButton>Skip</SkipButton>
+            <SkipButton
+                onClick={
+                    () => {
+                        r.push({
+                            pathname: "/questions",
+                            query: {
+                                qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,  
+                            }
+                        })
+                    }
+                }
+            >Skip</SkipButton>
             <Breadcrumb />
-            <h1>{CategoryName}</h1>
-            <h2>{Question}</h2>
-            <div className="section-selection">
-                <SelectionCont></SelectionCont>
-                <SelectionCont></SelectionCont>
-                <SelectionCont></SelectionCont>
-                <SelectionCont></SelectionCont>
-            </div>
+            <Options
+                q={qs[qnum].title}
+                arr={qs[qnum].ops}
+                c={qs[qnum].cat}
+            />
+            
+            {
+                Number(qnum) < qs.length - 1 &&
+                <button
+                    className="default"
+                    onClick={
+                        () => {
+                            r.push({
+                                pathname: "/questions",
+                                query: {
+                                    qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,  
+                                }
+                            })
+                        }
+                    }
+
+                >Next</button>
+            }
+            {
+                Number(qnum) >= qs.length - 1 &&
+                <button
+                    className="default"
+                    onClick={
+                        () => {
+                            r.push({
+                                pathname: "/results"
+                            })
+                        }
+                    }
+                >See your score</button>
+            }
             <div className="background-shape"></div>
-            <button className="default">Next</button>
+
         </Layout>
     )
 }
