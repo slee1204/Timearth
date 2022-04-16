@@ -5,7 +5,6 @@ const BreadcrumbComp = styled.div`
     display: flex;
     width: 330px;
     height: 57px;
-    margin-top: 5em;
     justify-content: space-between;
 `
 
