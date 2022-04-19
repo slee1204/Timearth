@@ -5,23 +5,18 @@ export const goodResults = [
     },
     {
         title: "You frequently used sustainable transportation!",
-        desc:""
     },
     {
         title: "You kept your water usage low through your shower frequency!",
-        desc:""
     },
     {
         title: "You kept your electricity usage to a minimum!",
-        desc:""
     },
     {
         title: "You produced a very small amount of waste!",
-        desc:""
     },
     {
         title: "Your shopping habits were sustainable!",
-        desc:""
     },
 
 ]
@@ -32,16 +27,12 @@ export const badResults = [
         desc:"A single litre of used oil can contaminate a million litres of water."
     },
     {
-        title:"",
-        desc:""
         
     },
     {
-        title:"",
-        desc:""
+
     },
     {
-        title:"",
-        desc:""
+
     },
 ]
