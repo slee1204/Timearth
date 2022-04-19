@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import CateGrid from '../comps/CateGrid'
 import { PageTitle, BtnText } from '../data/intro_content';
-import Menu from '../comps/Menu'
 import { useRouter } from 'next/router';
+import { Hamburger, Menu } from "../comps/Menu";
+import React from "react";
+import NavBar from "../comps/NavBar";
 
 const Em = styled.span`
     color: #FF9042;
@@ -23,10 +25,18 @@ const LayoutComp = styled.div`
 
 export default function Intro() {
 
+    const [open, setOpen] = React.useState(false);
+    const node = React.useRef();
+
     const r = useRouter();
+
     return (
         <LayoutComp>
-            <Menu />
+            <NavBar />
+            <div className="menu" ref={node}>
+                <Hamburger open={open} setOpen={setOpen} />
+                <Menu open={open} setOpen={setOpen} />
+            </div>
             <h1>{PageTitle}</h1>
             <h4>Calculate how many Earth minutes you saved today based our <Em>12-question quiz</Em> on the following categories:</h4>
             <CateGrid />

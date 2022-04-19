@@ -1,5 +1,7 @@
 import ChallengeCont from "../comps/Challenge_cont";
-import Menu from "../comps/Menu";
+import { Hamburger, Menu } from "../comps/Menu";
+import React from "react";
+import NavBar from "../comps/NavBar";
 import styled from 'styled-components';
 import { BtnText } from "../data/challenge_content";
 
@@ -19,8 +21,17 @@ export const Button = styled.button`
 `
 
 export default function Challenges() {
+
+    const [open, setOpen] = React.useState(false);
+    const node = React.useRef();
+
+
     return <Layout>
-        <Menu></Menu>
+        <NavBar />
+        <div className="menu" ref={node}>
+            <Hamburger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+        </div>
         <h1>Challenges</h1>
         <h3>See how you can help the Earth extend its lifespan!</h3>
         <div className="challenges">

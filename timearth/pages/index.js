@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { PageTitle, BtnText } from '../data/index_content'
-import Menu from "../comps/Menu";
+import { Hamburger, Menu } from "../comps/Menu";
+import React from "react";
+import NavBar from "../comps/NavBar";
 
 const LayoutComp = styled.div`
     display: flex;
@@ -19,10 +21,17 @@ const Em = styled.span`
 
 export default function Home() {
 
+    const [open, setOpen] = React.useState(false);
+    const node = React.useRef();
+
     const r = useRouter();
     return (
         <LayoutComp>
-            <Menu />
+            <NavBar />
+            <div className="menu" ref={node}>
+                <Hamburger open={open} setOpen={setOpen} />
+                <Menu open={open} setOpen={setOpen} />
+            </div>
             <img className="logomark" src="/logomark.svg" alt="Timearth Logomark" />
             <h1>{PageTitle}</h1>
             <h4>Log your daily activities and see how many <Em>Earth minutes</Em> you have saved today!</h4>
