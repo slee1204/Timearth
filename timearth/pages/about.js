@@ -17,13 +17,14 @@ const Em = styled.span`
     font-weight: 700;
 `
 
+
+
 const DescCont = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: top;
     align-items: center;
-    width: 320px;
-    
+    width: 320px;    
 `
 
 
