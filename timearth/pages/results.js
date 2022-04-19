@@ -21,15 +21,18 @@ const Em = styled.span`
 const Divider = styled.div`
     width: 100%;
     border: 0.5px solid #C4C4C4;
-    margin-bottom: 2em;
+    margin: 2em 0;
 `
 const Card = styled.div`
-    width: 170px;
-    height: 170px;
+    width: 200px;
+    height: 200px;
     margin-bottom: 23pt;
     background-color: #F6F6F6;
     border-radius: 10px;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-item: center;
 `
 
 export default function Result() {
