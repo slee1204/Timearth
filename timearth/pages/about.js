@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { PageTitle, BtnText } from '../data/about_content'
-import Menu from "../comps/Menu";
+import NavBar from "../comps/NavBar";
 
 const LayoutComp = styled.div`
     display: flex;
@@ -34,7 +34,7 @@ export default function Home() {
     const r = useRouter();
     return (
         <LayoutComp>
-            <Menu />
+            <NavBar />
             <img className="logomark" src="/logomark.svg" alt="Timearth Logomark" />
             <h1>{PageTitle}</h1>
             <h2>Our planet is in <Em>danger.</Em></h2>
