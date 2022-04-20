@@ -1,3 +1,6 @@
+export const PageTitle = "Today's Result";
+export const BtnText1 = "Start Over";
+export const BtnText2 = "See Challenges";
 export const goodResults = [
     {
         title: "You often opted for plant-based meals instead of meat!",
