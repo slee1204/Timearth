@@ -85,6 +85,9 @@ button {
     font-size: 16px;
     line-height: 22px;
 }
+.secondary.small.started {
+    background: #FF9042;
+}
 
 .logomark {
     width: 12em;
@@ -109,11 +112,6 @@ button {
     flex-wrap: wrap;
     justify-content: center;
 }
-
-/* .challenge-heading {
-    display: flex;
-    justify-content: space-between;
-}  */
 
 
 .radio {

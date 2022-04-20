@@ -1,9 +1,10 @@
 import ChallengeCont from "../comps/Challenge_cont";
 import { Hamburger, Menu } from "../comps/Menu";
-import React from "react";
+import React, {useState} from "react";
 import NavBar from "../comps/NavBar";
 import styled from 'styled-components';
 import { BtnText } from "../data/challenge_content";
+import ChallengesList from "../comps/Challenge_cont";
 
 export const Layout = styled.div`
     display: flex;
@@ -20,11 +21,14 @@ export const Button = styled.button`
     margin: 1em;
 `
 
-export default function Challenges() {
+export default function ChallengesPage() {
+    
 
     const [open, setOpen] = React.useState(false);
-    const node = React.useRef();
+    const [more, setMore] = React.useState(false);
+    const [btntext, setBtntext] = React.useState(false);
 
+    const node = React.useRef();
 
     return <Layout>
         <NavBar />
@@ -35,9 +39,19 @@ export default function Challenges() {
         <h1>Challenges</h1>
         <h3>See how you can help the Earth extend its lifespan!</h3>
         <div className="challenges">
-            <ChallengeCont></ChallengeCont>
-            <ChallengeCont></ChallengeCont>
+            <ChallengeCont chnum="0"></ChallengeCont>
+            <ChallengeCont chnum="1"></ChallengeCont>
         </div>
-        <Button className="primary large">{BtnText}</Button>
+        {more && <div className="challenges">
+            <ChallengeCont chnum="2"></ChallengeCont>
+            <ChallengeCont chnum="3"></ChallengeCont>
+            <ChallengeCont chnum="4"></ChallengeCont>
+            <ChallengeCont chnum="5"></ChallengeCont>
+        </div>}
+        <Button className="primary large"
+        onClick={
+         ()=> {setMore(!more); setBtntext(!btntext)}
+        }>{btntext ? "Show Less" : "Show More"}</Button>
+        {}
     </Layout>
 }
