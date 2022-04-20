@@ -44,12 +44,4 @@ export const badResults = [
         title:"",
         desc:""
     },
-    {
-        title:"",
-        desc:""
-    },
-    {
-        title:"",
-        desc:""
-    }
 ]

@@ -38,6 +38,11 @@ export default function Challenges() {
             <ChallengeCont></ChallengeCont>
             <ChallengeCont></ChallengeCont>
         </div>
-        <Button className="primary large">{BtnText}</Button>
+        <Button className="primary large"
+        onClick={
+            ()=> {
+                
+            }
+        }>{BtnText}</Button>
     </Layout>
 }
