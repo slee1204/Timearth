@@ -21,6 +21,7 @@ const MenuItem = styled.li`
     line-height: 27px;
     color: white;
     padding: 0.8em;
+    cursor:pointer;
 
     &:hover {
         color: white;
