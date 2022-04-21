@@ -38,7 +38,7 @@ export default function ChallengesPage() {
         </div>
         <h1>Challenges</h1>
         <h3>See how you can help the Earth extend its lifespan!</h3>
-        <div>
+        <div className="challenges">
             <div className="default-challenges">
             <ChallengeCont chnum="0"></ChallengeCont>
             <ChallengeCont chnum="1"></ChallengeCont>
