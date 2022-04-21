@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useRouter } from "next/router";
-import { changeAnswers } from '../data/question_content';
+// import { changeAnswers } from '../../data/question_content';
 
 export const OptionTitle = styled.h2`
     margin-top: 0;

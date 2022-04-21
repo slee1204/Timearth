@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
 
-
 const OverlayComp = styled.div`
     width: 100%;
     height: 100%;
