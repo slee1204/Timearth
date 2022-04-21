@@ -2,13 +2,15 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { PageTitle, BtnText } from '../data/about_content'
 import NavBar from "../comps/NavBar";
+import { Hamburger, Menu } from "../comps/Menu";
+import React from "react";
 
 const LayoutComp = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 6.5em;
+    margin-top: 5em;
 `
 
 const Em = styled.span`
@@ -17,42 +19,35 @@ const Em = styled.span`
     font-weight: 700;
 `
 
-
-
 const DescCont = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: top;
-    align-items: center;
-    width: 320px;    
+    align-items: center; 
 `
 
+export default function About() {
 
-
-export default function Home() {
+    const [open, setOpen] = React.useState(false);
+    const node = React.useRef();
 
     const r = useRouter();
     return (
         <LayoutComp>
             <NavBar />
+            <div className="menu" ref={node}>
+                <Hamburger open={open} setOpen={setOpen} />
+                <Menu open={open} setOpen={setOpen} />
+            </div>
             <img className="logomark" src="/logomark.svg" alt="Timearth Logomark" />
             <h1>{PageTitle}</h1>
-            <h2>Our planet is in <Em>danger.</Em></h2>
             <DescCont>
-                <h4>
-                    Human actions are the leading
-                    cause of climate change.
-                    Factors such as transportation and water usage change
-                    yield detrimental effects over time.
-                </h4>
+                <h2>Our planet is in <Em>danger.</Em></h2>
+                <h4>Human actions are the leading cause of climate change. Factors such as transportation and water usage change yield detrimental effects over time.</h4>
             </DescCont>
-            <h2>Our <Em>Purpose</Em></h2>
             <DescCont>
-                <h4>
-                    This app was created to bring
-                    awareness to the impact our everyday
-                    actions can have on the planet.
-                </h4>
+                <h2>Our <Em>Purpose</Em></h2>
+                <h4>This app was created to bring awareness to the impact our everyday actions can have on the planet.</h4>
             </DescCont>
             <button
                 className="primary large"
