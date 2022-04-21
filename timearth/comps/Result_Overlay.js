@@ -1,24 +1,23 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
-import Overlay from "react-overlay-component";
 
 
 const OverlayComp = styled.div`
     width: 100%;
-    height: 360px;
-    background: #FFFFFF;
+    height: 100%;
+    background: white;
     border-radius: 8px;
     color: #000000;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 `
 const Header = styled.div`
     width: 100%;
-    height: 80px;
-    left: 0px;
+    height: 3em;
     top: 0px;
     background: #6B97ED;
     font-weight: 700;
@@ -29,6 +28,7 @@ const Header = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 8px 8px 0 0;
+    position: relative;
 `
 const Logo = styled.img`
     width: 3em;
@@ -55,21 +55,24 @@ const H2 = styled.div`
     font-size: 22px;
     line-height: 30px;
     text-align: center;
-    padding: 0 3em 0 3em;
+    padding: 1.5em;
+`
+const Button = styled.button`
+    margin: 1.5em;
 `
 
-export const Overlay = () => {
+export default function Overlay(props) {
 
     const r = useRouter();
 
-    return <OverlayComp>
+    return (props.trigger) ? (<OverlayComp>
         <Header>Today’s Results</Header>
         <H2>You have increased the Earth’s lifespan by</H2>
         <Time>
             <Logo src="/logomark.svg" />
             <Result>00:00:00</Result>
         </Time>
-        <button
+        <Button
             className="primary large"
             onClick={
                 () => {
@@ -79,8 +82,9 @@ export const Overlay = () => {
                         }
                     )
                 }
-            }>Learn More</button>
-    </OverlayComp>
+            }>Learn More</Button>
+        {props.children}
+    </OverlayComp>) : "";
 }
 
 
