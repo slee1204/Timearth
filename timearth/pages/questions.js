@@ -68,7 +68,7 @@ export default function Questions() {
             <Breadcrumb />
             <Options
                 q={qs[qnum].title}
-                arr={qs[qnum].ops}
+                // arr={qs[qnum].ops}
                 c={qs[qnum].cat}
             />
             
