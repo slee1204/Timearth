@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Breadcrumb";
-import Options from "../comps/Options";
+import Options from "../comps/Questions/Options";
 import { qs } from "../data/question_content"
-import Overlay from "../comps/Result_Overlay";
+import Overlay from "../comps/Questions/Overlay";
 import React, { useState } from "react";
 
 export const Layout = styled.div`
@@ -39,7 +39,7 @@ export const SkipButton = styled.div`
 export default function Questions() {
 
     const r = useRouter();
-    const [Open, setOpen] = useState(false);
+    const [OverlayOpen, setOverlayOpen] = useState(false);
 
     var { qnum } = r.query;
 
@@ -98,13 +98,13 @@ export default function Questions() {
                     className="default"
                     onClick={
                         () => {
-                            setOpen(true)
+                            setOverlayOpen(true)
                         }
                     }
                 >See your score</button>
             }
             <div className="background-shape"></div>
-            <Overlay trigger={Open}></Overlay>
+            <Overlay trigger={OverlayOpen}></Overlay>
         </Layout>
     )
 }
