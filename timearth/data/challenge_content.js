@@ -21,7 +21,7 @@ export const Challenges = [
 },
 {
     title: "Shopping Habits",
-    desc: "Use reusable shopping bags for your groceries today!",
+    desc: "Use reusable bags for your groceries today!",
     time: "35",
     img: "/shopping.svg"
 },
