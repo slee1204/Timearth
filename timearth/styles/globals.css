@@ -108,10 +108,14 @@ button {
 
 /* challenges */
 
-.challenges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* .challenges {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+} */
+.default-challenges, .more-challenges {
+    display:flex;
+    flex-direction:column;
 }
 
 
