@@ -8,11 +8,11 @@ const Challenge_cont = styled.div`
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    justify-content:space-between;
     padding: 10px;
     padding-top: 0;
     text-align: left;
     margin-bottom: 1em;
-    flex:1;
 `
 
 const ChallengeHeader = styled.div`
@@ -24,7 +24,7 @@ const ChallengeHeader = styled.div`
 
 const Button = styled.button`
     margin-left: auto;
-    margin-top: 1em
+    margin-top: 1em;
 `
 
 const ChallengeImg = styled.img`
