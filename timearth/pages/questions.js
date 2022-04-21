@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Breadcrumb from "../comps/Breadcrumb";
 import Options from "../comps/Options";
 import { qs } from "../data/question_content"
+import Overlay from "../comps/Result_Overlay";
+import React, { useState } from "react";
 
 export const Layout = styled.div`
     display: flex;
@@ -37,6 +39,7 @@ export const SkipButton = styled.div`
 export default function Questions() {
 
     const r = useRouter();
+    const [Open, setOpen] = useState(false);
 
     var { qnum } = r.query;
 
@@ -59,7 +62,7 @@ export default function Questions() {
                         r.push({
                             pathname: "/questions",
                             query: {
-                                qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,  
+                                qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
                             }
                         })
                     }
@@ -71,7 +74,7 @@ export default function Questions() {
                 // arr={qs[qnum].ops}
                 c={qs[qnum].cat}
             />
-            
+
             {
                 Number(qnum) < qs.length - 1 &&
                 <button
@@ -81,7 +84,7 @@ export default function Questions() {
                             r.push({
                                 pathname: "/questions",
                                 query: {
-                                    qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,  
+                                    qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
                                 }
                             })
                         }
@@ -95,15 +98,13 @@ export default function Questions() {
                     className="default"
                     onClick={
                         () => {
-                            r.push({
-                                pathname: "/results"
-                            })
+                            setOpen(true)
                         }
                     }
                 >See your score</button>
             }
             <div className="background-shape"></div>
-
+            <Overlay trigger={Open}></Overlay>
         </Layout>
     )
 }
