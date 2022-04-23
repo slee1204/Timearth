@@ -54,6 +54,7 @@ export const qs = [
         },
       ],
         cat: "Transportation",
+        img: "/transportation.svg"
     },
     {
       title: "How long is your commute?",
@@ -73,9 +74,10 @@ export const qs = [
         {
           txt: "More than 2 hrs",
           score: 1,
-        },
+          },
       ],
-      cat: "Transportation",
+        cat: "Transportation",
+        img: "/transportation.svg"
     },
     {
       title: "What kind of animal meat you eat most often for your meal?",
@@ -97,7 +99,8 @@ export const qs = [
           score: 1,
         },
       ],
-      cat: "Eating Habits",
+        cat: "Eating Habits",
+        img: "/food.svg"
     },
   
     {
@@ -120,7 +123,8 @@ export const qs = [
           score: 4,
         },
       ],
-      cat: "Eating Habits",
+        cat: "Eating Habits",
+        img: "/food.svg"
     },
     {
       title: "How often do you take showers?",
@@ -142,7 +146,8 @@ export const qs = [
           score: 4,
         },
       ],
-      cat: "Water Usage",
+        cat: "Water Usage",
+        img: "/water.svg"
     },
     {
       title: "How long are your showers?",
@@ -164,7 +169,8 @@ export const qs = [
           score: 1,
         },
       ],
-      cat: "Water Usage",
+        cat: "Water Usage",
+        img: "/water.svg"
     },
     {
       title: "How much time did you spend on your devices today?",
@@ -186,7 +192,8 @@ export const qs = [
           score: 4,
         },
       ],
-      cat: "Electricity Usage",
+        cat: "Electricity Usage",
+        img: "/electricity.svg"
     },
     {
       title: "How much time do you spend with the lights on?",
@@ -208,7 +215,8 @@ export const qs = [
           score: 1,
         },
       ],
-      cat: "Electricity Usage",
+        cat: "Electricity Usage",
+        img: "/electricity.svg"
     },
     {
       title: "How much waste did you produce today?",
@@ -230,7 +238,8 @@ export const qs = [
           score: 1,
         },
       ],
-      cat: "Waste",
+        cat: "Waste",
+        img: "/waste.svg"
     },
     {
       title: "How much of your waste did you recycle today?",
@@ -252,7 +261,8 @@ export const qs = [
           score: 4,
         },
       ],
-      cat: "Waste",
+        cat: "Waste",
+        img: "/waste.svg"
     },
     {
       title: "What kind of shopping bags do you use most frequently?",
@@ -270,7 +280,8 @@ export const qs = [
           score: 4,
         },
       ],
-      cat: "Shopping Habits",
+        cat: "Shopping Habits",
+        img: "/shopping.svg"
     },
     {
       title: "How often do you receive paper receipts?",
@@ -292,7 +303,8 @@ export const qs = [
           score: 4,
         },
       ],
-      cat: "Shopping Habits",
+        cat: "Shopping Habits",
+        img: "/shopping.svg"
     },
   ];
   // var answers = [];
