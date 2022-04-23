@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useRouter } from "next/router";
-// import { changeAnswers } from '../../data/question_content';
 
 export const OptionTitle = styled.h2`
     margin-top: 0;
@@ -50,16 +49,14 @@ export default function Options(
         </OptionTitle>
         <OptionCont>
             {
-                arr.map((o, i) =>
-                    <OptionBtn onClick={
-                        () => changeAnswers(o, qnum)
-                    }>{o}
-                        <input
-                            className="radio"
-                            name="select"
-                            type="radio" />
-                    </OptionBtn>)
+                arr.map((o, i) => <OptionBtn>{o.txt}
+                    <input
+                        type='radio'
+                        className='radio'
+                        name='selected' />
+                </OptionBtn>)
             }
         </OptionCont>
     </div>
 }
+

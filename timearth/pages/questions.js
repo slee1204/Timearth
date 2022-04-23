@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
-import Breadcrumb from "../comps/Breadcrumb";
+import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
 import { qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
@@ -71,7 +71,7 @@ export default function Questions() {
             <Breadcrumb />
             <Options
                 q={qs[qnum].title}
-                // arr={qs[qnum].ops}
+                arr={qs[qnum].ops}
                 c={qs[qnum].cat}
             />
 
