@@ -9,28 +9,64 @@
 // }
 import { useRouter } from "next/router";
 
-export function storeChoice(qnum, cnum) {
-  const r = useRouter();
-  var { qnum } = r.query;
-  
+var answers = [];
 
-  if (qnum === undefined) {
-    qnum = 0;
-  }
-  
-  ops[1] = cnum;
+export function storeChoice(cnum, score) {  
+
+    answers[cnum] = score;
+    console.log(answers);
 
 }
 
-// arr = [
-//     0,
-//     1,
-//     2,
-//     3,
-//     4,
-//     5,
-//     6
-// ]
+export const result = {
+
+    Excellent: {
+        text: "00:20:00"
+    },
+    Good: {
+        text: "00:10:00"
+    },
+    Okay: {
+        text: "00:05:00"
+    },
+    Bad: {
+        text: "00:00:00"
+    }
+}
+
+export function getResults() {
+
+    return (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
+
+}
+
+export const sum = getResults();
+
+export function showResults(
+    txt = ""
+) {
+    return txt
+    // sum === undefined;
+
+    if (sum <= 11) {
+        console.log(result.Bad.text) 
+    }
+
+  if ((sum > 11) && (sum <= 23)){
+        return result.Okay.text
+    }
+
+    if ((sum > 23) && (sum <= 35)){
+        return result.Good.text
+    }
+
+    if (sum > 35) {
+        return result.Excellent.text
+    }
+
+
+}
+// {res[an[0]].text}
 
 export const qs = [
     {

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
-import { qs } from "../data/question_content"
+import { getResults, qs, result, showResults } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
 import React, { useState } from "react";
 
@@ -99,6 +99,7 @@ export default function Questions() {
                     onClick={
                         () => {
                             setOverlayOpen(true)
+                            getResults()
                         }
                     }
                 >See your score</button>
