@@ -1,11 +1,15 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
+import Questions from "../../pages/questions";
+import AppContext from "../../src/context/AppContext";
+
 
 const OverlayComp = styled.div`
     width: 100%;
     height: 100%;
     background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     color: #000000;
     display: flex;
@@ -63,13 +67,14 @@ const Button = styled.button`
 export default function Overlay(props) {
 
     const r = useRouter();
+    const { total, setTotal } = useContext(AppContext);
 
     return (props.trigger) ? (<OverlayComp>
         <Header>Today’s Results</Header>
         <H2>You have increased the Earth’s lifespan by</H2>
         <Time>
             <Logo src="/logomark.svg" />
-            <Result>00:00:00</Result>
+            <Result>00:{total}:00</Result>
         </Time>
         <Button
             className="primary large"

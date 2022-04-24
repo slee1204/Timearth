@@ -4,7 +4,8 @@ import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
 import { qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AppContext from '../src/context/AppContext';
 
 export const Layout = styled.div`
     display: flex;
@@ -40,12 +41,17 @@ export default function Questions() {
 
     const r = useRouter();
     const [OverlayOpen, setOverlayOpen] = useState(false);
-
+    const { optionChosen, setOptionChosen } = useContext(AppContext);
+    const { total, setTotal } = useContext(AppContext);
     var { qnum } = r.query;
+
 
     if (qnum === undefined) {
         qnum = 0;
     }
+
+
+    
 
     return (
         <Layout>
@@ -86,7 +92,12 @@ export default function Questions() {
                                 query: {
                                     qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
                                 }
-                            })
+                            });
+                            setTotal(total+optionChosen);
+                            // alert(total+optionChosen);
+                            console.log(total+optionChosen);
+                           
+                            
                         }
                     }
 
@@ -98,7 +109,8 @@ export default function Questions() {
                     className="default"
                     onClick={
                         () => {
-                            setOverlayOpen(true)
+                            setOverlayOpen(true);
+                            setTotal(total+optionChosen);
                         }
                     }
                 >See your score</button>

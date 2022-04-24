@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { useRouter } from "next/router";
+import React, {useState, useContext} from 'react';
+import { qs } from '../../data/question_content';
+import AppContext from '../../src/context/AppContext';
 
 export const OptionTitle = styled.h2`
     margin-top: 0;
@@ -28,6 +31,7 @@ export const OptionCont = styled.div`
     flex-wrap: wrap;
 `
 
+
 export default function Options(
     {
         q = "question",
@@ -42,6 +46,9 @@ export default function Options(
         qnum = 0;
     }
 
+
+    const { optionChosen, setOptionChosen } = useContext(AppContext);
+
     return <div>
         <h1>{c}</h1>
         <OptionTitle>
@@ -49,7 +56,9 @@ export default function Options(
         </OptionTitle>
         <OptionCont>
             {
-                arr.map((o, i) => <OptionBtn>{o.txt}
+                arr.map((o, i) => <OptionBtn onClick={()=> {
+                    setOptionChosen(o.score);
+                }}>{o.txt}
                     <input
                         type='radio'
                         className='radio'
