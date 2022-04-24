@@ -39,15 +39,17 @@ export default function ChallengesPage() {
         <h1>Challenges</h1>
         <h3>See how you can help the Earth extend its lifespan!</h3>
         <div className="challenges">
+            <div className="default-challenges">
             <ChallengeCont chnum="0"></ChallengeCont>
             <ChallengeCont chnum="1"></ChallengeCont>
-        </div>
-        {more && <div className="challenges">
+            </div>
+        {more && <div className="more-challenges">
             <ChallengeCont chnum="2"></ChallengeCont>
             <ChallengeCont chnum="3"></ChallengeCont>
             <ChallengeCont chnum="4"></ChallengeCont>
             <ChallengeCont chnum="5"></ChallengeCont>
-        </div>}
+            </div>}
+        </div>
         <Button className="primary large"
         onClick={
          ()=> {setMore(!more); setBtntext(!btntext)}
