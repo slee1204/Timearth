@@ -6,6 +6,7 @@ const Overlay = styled.div`
     max-width: 70%;
     height: fit-content;
     background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     color: #000000;
     display: flex;

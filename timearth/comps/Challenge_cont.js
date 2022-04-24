@@ -4,7 +4,7 @@ import { Challenges } from "../data/challenge_content";
 import React, {useState} from "react";
 
 const Challenge_cont = styled.div`
-    border: 1px solid lightgrey;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
