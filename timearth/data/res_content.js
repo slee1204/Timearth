@@ -3,7 +3,8 @@ export const BtnText1 = "Start Over";
 export const BtnText2 = "See Challenges";
 export const goodResults = [
     {
-        title: "You often opted for plant-based meals instead of meat!",
+        header: "Great Job!",
+        title: "You had plant-based meals for most of this week!",
         desc: " A global shift to a plant-based diet could reduce greenhouse gases caused by food production by 70% within 30 years."
     },
     {
@@ -31,6 +32,7 @@ export const goodResults = [
 
 export const badResults = [
     {
+        header: "We Can Try Together!",
         title:"You have produced a significant amount of waste",
         desc:"A single litre of used oil can contaminate a million litres of water."
     },

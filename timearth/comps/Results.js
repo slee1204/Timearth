@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
+import { goodResults, badResults } from '../data/res_content'
 
 const Overlay = styled.div`
     max-width: 70%;
@@ -13,6 +14,8 @@ const Overlay = styled.div`
     justify-content: space-around;
     align-items: center;
     position: absolute;
+    
+
 `
 const Header = styled.div`
     width: 100%;
@@ -43,13 +46,32 @@ const Button = styled.button`
     margin: 1em;
 `
 
-export default function Results(props) {
+export function Good(props) {
 
     return (props.trigger) ? (<Overlay>
-        <Header>Header</Header>
+        <Header>{goodResults[0].header}</Header>
         <img src="/transportation.svg"></img>
-        <SubHeader>You had plant-based meals for most of this week!</SubHeader>
-        <Desc> A global shift to a plant-based diet could reduce greenhouse gases caused by food production by 70% within 30 years.</Desc>
+        <SubHeader>{goodResults[0].title}</SubHeader>
+        <Desc>{goodResults[0].desc}</Desc>
+        <Button
+            className="primary large"
+            onClick={
+                () => {
+                    props.setTrigger(false)
+                }
+            }
+        >Back</Button>
+        {props.children}
+    </Overlay>) : ""
+}
+
+export function Bad(props) {
+
+    return (props.trigger) ? (<Overlay>
+        <Header>{badResults[0].header}</Header>
+        <img src="/Waste.svg"></img>
+        <SubHeader>{badResults[0].title}</SubHeader>
+        <Desc>{badResults[0].desc}</Desc>
         <Button
             className="primary large"
             onClick={
