@@ -34,39 +34,33 @@ export const result = {
     }
 }
 
-export function getResults() {
+export function getResults(cnum, score) {
 
-    return (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
+    answers[cnum] = score;
 
-}
+    var res_sum = (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
 
-export const sum = getResults();
+    // var initialValue = 0;
+    // var res_sum = answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue);
 
-export function showResults(
-    txt = ""
-) {
-    return txt
-    // sum === undefined;
-
-    if (sum <= 11) {
-        console.log(result.Bad.text) 
+    if ((res_sum === undefined) || (res_sum >= 0) && (score <= 11)) {
+        return result.Bad.text 
     }
-
-  if ((sum > 11) && (sum <= 23)){
-        return result.Okay.text
+     
+    if ((res_sum > 11) && (res_sum <= 23)){
+    return result.Okay.text
     }
-
-    if ((sum > 23) && (sum <= 35)){
+     
+    if ((res_sum > 23) && (res_sum <= 35)){
         return result.Good.text
     }
-
-    if (sum > 35) {
+     
+    if (res_sum > 35) {
         return result.Excellent.text
     }
 
-
+    console.log(res_sum)
 }
-// {res[an[0]].text}
 
 export const qs = [
     {

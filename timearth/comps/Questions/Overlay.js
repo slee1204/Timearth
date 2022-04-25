@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
-import { showResults, sum, getResults } from "../../data/question_content";
+import { getResults } from "../../data/question_content";
 
 const OverlayComp = styled.div`
     width: 100%;
@@ -70,7 +70,7 @@ export default function Overlay(props) {
         <H2>You have increased the Earth’s lifespan by</H2>
         <Time>
             <Logo src="/logomark.svg" />
-            <Result>{showResults(sum)}</Result>
+            <Result>{getResults()}</Result>
         </Time>
         <Button
             className="primary large"

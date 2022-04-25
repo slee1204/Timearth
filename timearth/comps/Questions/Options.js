@@ -50,7 +50,7 @@ export default function Options(
         </OptionTitle>
         <OptionCont>
             {
-                arr.map((o, i) => <OptionBtn>{o.txt}
+                arr.map((o, i) => <OptionBtn key={i}>{o.txt}
                     <input onClick={ 
                         () => {
                             storeChoice(qnum, o.score)
