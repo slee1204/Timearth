@@ -22,6 +22,9 @@ const LayoutComp = styled.div`
     @media only screen and (max-width: 600px) and (max-height: 750px) {
         margin-top: 5em;
 `
+export const Button = styled.button`
+    margin: 3em;
+`
 
 export default function Intro() {
 
@@ -40,7 +43,7 @@ export default function Intro() {
             <h1>{PageTitle}</h1>
             <h4>Calculate how many Earth minutes you saved today based our <Em>12-question quiz</Em> on the following categories:</h4>
             <CateGrid />
-            <button
+            <Button
                 className='primary large'
                 onClick={
                     () => {
@@ -51,7 +54,7 @@ export default function Intro() {
                         )
                     }
                 }
-            >{BtnText}</button>
+            >{BtnText}</Button>
         </LayoutComp>
     )
 }
