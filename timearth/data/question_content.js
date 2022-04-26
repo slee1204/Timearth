@@ -1,14 +1,3 @@
-// export function totalResult(){
-//     var result = [];
-
-//     for (var i =0; i < 47; i++){
-//         result.push(i+1)
-
-//     }
-
-// }
-import { useRouter } from "next/router";
-
 var answers = [];
 
 export function storeChoice(cnum, score) {  
@@ -16,6 +5,34 @@ export function storeChoice(cnum, score) {
     answers[cnum] = score;
     console.log(answers);
 
+}
+
+export function getResults(cnum, score) {
+
+    answers[cnum] = score;
+
+    // var res_sum = (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
+
+    var initialValue = 0;
+    var res_sum = Number(answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue));
+
+    if ((res_sum === undefined) || (0 <= res_sum) && (res_sum <= 11)) {
+        return result.Bad.text 
+    }
+     
+    if ((res_sum > 11) && (res_sum <= 23)){
+        return result.Okay.text
+    }
+     
+    if ((res_sum > 23) && (res_sum <= 35)){
+        return result.Good.text
+    }
+     
+    if (res_sum > 35) {
+        return result.Excellent.text
+    }
+
+    console.log(res_sum)
 }
 
 export const result = {
@@ -32,34 +49,6 @@ export const result = {
     Bad: {
         text: "00:00:00"
     }
-}
-
-export function getResults(cnum, score) {
-
-    answers[cnum] = score;
-
-    var res_sum = (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
-
-    // var initialValue = 0;
-    // var res_sum = answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue);
-
-    if ((res_sum === undefined) || (res_sum >= 0) && (score <= 11)) {
-        return result.Bad.text 
-    }
-     
-    if ((res_sum > 11) && (res_sum <= 23)){
-    return result.Okay.text
-    }
-     
-    if ((res_sum > 23) && (res_sum <= 35)){
-        return result.Good.text
-    }
-     
-    if (res_sum > 35) {
-        return result.Excellent.text
-    }
-
-    console.log(res_sum)
 }
 
 export const qs = [

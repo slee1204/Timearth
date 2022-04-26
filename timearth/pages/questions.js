@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
-import { storeChoice, getResults, qs } from "../data/question_content"
+import { getResults, qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 
 export const Layout = styled.div`
     display: flex;
@@ -40,6 +40,16 @@ export default function Questions() {
 
     const r = useRouter();
     const [OverlayOpen, setOverlayOpen] = useState(false);
+
+    useEffect(() => {
+        if (!r.isReady) return;
+        r.push({
+            pathname: "/questions",
+            query: {
+                qnum: 0
+            }
+        })
+    }, [])
 
     var { qnum } = r.query;
 
