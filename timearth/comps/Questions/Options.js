@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useRouter } from "next/router";
 import { storeChoice } from '../../data/question_content';
 import React, { useState } from 'react'
+
 export const OptionTitle = styled.h2`
     margin-top: 0;
 `
@@ -28,6 +29,11 @@ export const OptionCont = styled.div`
     align-items: center;
     flex-wrap: wrap;
 `
+export const DropDown = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
 
 export default function Options({ q = "question", arr = [], c = "category" }) {
     const [selectedVal, setSelectedVal] = useState();
@@ -36,6 +42,42 @@ export default function Options({ q = "question", arr = [], c = "category" }) {
 
     if (qnum === undefined) {
         qnum = 0;
+    }
+
+    if ((qnum == 6) || (qnum == 8)) {
+        return <div>
+            <h1>{c}</h1>
+            <OptionTitle>
+                {q}
+            </OptionTitle>
+            <OptionCont>
+                {
+                    arr.map((o, i) => <OptionBtn key={o.txt}>{o.txt}
+                        <div>
+                            <select onChange={
+                                (e) => {
+                                    setSelectedVal()
+                                    storeChoice(qnum, e.target.value)
+                                }
+                            }>
+                                <option >0</option>
+                                <option >1</option>
+                                <option >2</option>
+                                <option >3</option>
+                                <option >4</option>
+                            </select>
+                            {
+                                (qnum == 6) && <span className='unit'>mins</span>
+                            }
+
+                            {
+                                (qnum == 8) && <span className='unit'>items</span>
+                            }
+                        </div>
+                    </OptionBtn>)
+                }
+            </OptionCont>
+        </div>
     }
 
     return <div>
@@ -59,6 +101,7 @@ export default function Options({ q = "question", arr = [], c = "category" }) {
                 </OptionBtn>)
             }
         </OptionCont>
+
+
     </div>
 }
-
