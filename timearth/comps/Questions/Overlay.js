@@ -3,17 +3,33 @@ import styled from 'styled-components';
 import React, { useState } from "react";
 import { getResults } from "../../data/question_content";
 
-const OverlayComp = styled.div`
+const Background = styled.div`
+    background-color: black;
     width: 100%;
     height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.7;
+`
+
+const OverlayComp = styled.div`
     background: white;
     border-radius: 8px;
     color: #000000;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    position: relative;
+    width: 330px;
+    height: fit-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    top:50%;
+    left:50%;
+    z-index: 10;
+    transform:translate(-50%, -50%);
 `
 const Header = styled.div`
     width: 100%;
@@ -65,26 +81,28 @@ export default function Overlay(props) {
 
     const r = useRouter();
 
-    return (props.trigger) ? (<OverlayComp>
-        <Header>Today’s Results</Header>
-        <H2>You have increased the Earth’s lifespan by</H2>
-        <Time>
-            <Logo src="/logomark.svg" />
-            <Result>{getResults()}</Result>
-        </Time>
-        <Button
-            className="primary large"
-            onClick={
-                () => {
-                    r.push(
-                        {
-                            pathname: "/results"
-                        }
-                    )
-                }
-            }>Learn More</Button>
-        {props.children}
-    </OverlayComp>) : "";
+    return (props.trigger) ? (<div>
+        <Background></Background>
+        <OverlayComp>
+            <Header>Today’s Results</Header>
+            <H2>You have increased the Earth’s lifespan by</H2>
+            <Time>
+                <Logo src="/logomark.svg" />
+                <Result>{getResults()}</Result>
+            </Time>
+            <Button
+                className="primary large"
+                onClick={
+                    () => {
+                        r.push(
+                            {
+                                pathname: "/results"
+                            }
+                        )
+                    }
+                }>Learn More</Button>
+            {props.children}
+        </OverlayComp>         </div>) : "";
 }
 
 
