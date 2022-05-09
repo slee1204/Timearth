@@ -3,14 +3,8 @@ import styled from 'styled-components';
 import { PageTitle, BtnText1, BtnText2 } from '../data/res_content'
 import NavBar from "../comps/NavBar";
 import { Hamburger, Menu } from "../comps/Menu";
-<<<<<<< HEAD
-import React, { useState, useContext} from "react";
-import Results from "../comps/Results";
-import AppContext from "../src/context/AppContext";
-=======
 import React, { useState } from "react";
 import { Good, Bad } from "../comps/Results";
->>>>>>> origin
 
 const LayoutComp = styled.div`
     display: flex;
