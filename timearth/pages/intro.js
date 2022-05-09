@@ -41,7 +41,7 @@ export default function Intro() {
                 <Menu open={open} setOpen={setOpen} />
             </div>
             <h1>{PageTitle}</h1>
-            <h4>Calculate how many Earth minutes you saved today based our <Em>12-question quiz</Em> on the following categories:</h4>
+            <h4>Let's see how many <Em>minutes</Em> you can add to the Earth's lifespan! Calculate your Earth minutes based our <Em>12-question quiz</Em> on the following categories:</h4>
             <CateGrid />
             <Button
                 className='primary large'
