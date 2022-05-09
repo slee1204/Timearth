@@ -76,11 +76,39 @@ const H2 = styled.div`
 const Button = styled.button`
     margin: 1.5em;
 `
+const DateBtn = styled.div`
+background-color: {dbtn ? "#f0f0f0" : "#FF9042"};
+height: 2em;
+width:2em;
+margin:.2em;
+border-radius: 4px;
+font-weight:bold;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+`
+const DateCont = styled.div`
+display:flex;
+justify-content:space-between;`
+
+export function DateButton(props) {
+    const [dbtn, setDBtn] = useState(false);
+    return <DateBtn className={
+        dbtn ? "selected-date" : "" }
+        onClick={
+        ()=>{
+            setDBtn(!dbtn)
+        }
+    }>
+        {props.d}
+    </DateBtn>
+}
 
 export default function Overlay(props) {
 
     const r = useRouter();
-
+    if(props.type === "result") {
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
@@ -103,6 +131,32 @@ export default function Overlay(props) {
                 }>Learn More</Button>
             {props.children}
         </OverlayComp>         </div>) : "";
+}
+if(props.type === "challenge") {
+    return (props.trigger) ? (<div>
+        <Background></Background>
+        <OverlayComp>
+            <Header>Start Challenge</Header>
+            <H2>Choose the days that you will complete this challenge.</H2>
+            <DateCont>
+            <DateButton d="S"></DateButton>
+            <DateButton d="M"></DateButton>
+            <DateButton d="T"></DateButton>
+            <DateButton d="W"></DateButton>
+            <DateButton d="Th"></DateButton>
+            <DateButton d="F"></DateButton>
+            <DateButton d="Sa"></DateButton>
+            </DateCont>
+            <Button
+                className="primary large"
+                onClick={
+                    (e) => {
+                        
+                    }
+                }>Start</Button>
+            {props.children}
+        </OverlayComp>         </div>) : "";
+}
 }
 
 
