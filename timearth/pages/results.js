@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import { PageTitle, BtnText1, BtnText2 } from '../data/res_content'
 import NavBar from "../comps/NavBar";
 import { Hamburger, Menu } from "../comps/Menu";
+<<<<<<< HEAD
 import React, { useState, useContext} from "react";
 import Results from "../comps/Results";
 import AppContext from "../src/context/AppContext";
+=======
+import React, { useState } from "react";
+import { Good, Bad } from "../comps/Results";
+>>>>>>> origin
 
 const LayoutComp = styled.div`
     display: flex;
@@ -90,7 +95,8 @@ const Img = styled.img`
 export default function Result() {
 
     const r = useRouter();
-    const [OverlayOpen, setOverlayOpen] = useState(false);
+    const [OverlayOpen, setOverlayOpen1] = useState(false);
+    const [Overlayopen, setOverlayOpen2] = useState(false);
     const [open, setOpen] = React.useState(false);
     const node = React.useRef();
     const { total, setTotal } = useContext(AppContext);
@@ -110,7 +116,7 @@ export default function Result() {
                     <Card
                         onClick={
                             () => {
-                                setOverlayOpen(true)
+                                setOverlayOpen1(true)
                             }
                         }>
                         <Img src="/HappyEarth.svg" alt="Happy Earth" />
@@ -122,7 +128,7 @@ export default function Result() {
                     <Card
                         onClick={
                             () => {
-                                setOverlayOpen(true)
+                                setOverlayOpen2(true)
                             }
                         }>
                         <Img src="/SadEarth.svg" alt="Sad Earth" />
@@ -150,7 +156,8 @@ export default function Result() {
                     }
                 }>{BtnText2}
             </Button>
-            <Results trigger={OverlayOpen} setTrigger={setOverlayOpen}></Results>
+            <Good trigger={OverlayOpen} setTrigger={setOverlayOpen1}></Good>
+            <Bad trigger={Overlayopen} setTrigger={setOverlayOpen2}></Bad>
         </LayoutComp>
     )
 }

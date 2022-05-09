@@ -1,36 +1,55 @@
-// export function totalResult(){
-//     var result = [];
+var answers = [];
 
-//     for (var i =0; i < 47; i++){
-//         result.push(i+1)
+export function storeChoice(cnum, score) {  
 
-//     }
-
-// }
-import { useRouter } from "next/router";
-
-export function storeChoice(qnum, cnum) {
-  const r = useRouter();
-  var { qnum } = r.query;
-  
-
-  if (qnum === undefined) {
-    qnum = 0;
-  }
-  
-  ops[1] = cnum;
+    answers[cnum] = score;
+    console.log(answers);
 
 }
 
-// arr = [
-//     0,
-//     1,
-//     2,
-//     3,
-//     4,
-//     5,
-//     6
-// ]
+export function getResults(cnum, score) {
+
+    answers[cnum] = score;
+
+    // var res_sum = (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
+
+    var initialValue = 0;
+    var res_sum = Number(answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue));
+
+    if ((res_sum === undefined) || (0 <= res_sum) && (res_sum <= 11)) {
+        return result.Bad.text 
+    }
+     
+    if ((res_sum > 11) && (res_sum <= 23)){
+        return result.Okay.text
+    }
+     
+    if ((res_sum > 23) && (res_sum <= 35)){
+        return result.Good.text
+    }
+     
+    if (res_sum > 35) {
+        return result.Excellent.text
+    }
+
+    console.log(res_sum)
+}
+
+export const result = {
+
+    Excellent: {
+        text: "00:20:00"
+    },
+    Good: {
+        text: "00:10:00"
+    },
+    Okay: {
+        text: "00:05:00"
+    },
+    Bad: {
+        text: "00:00:00"
+    }
+}
 
 export const qs = [
     {

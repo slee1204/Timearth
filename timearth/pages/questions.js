@@ -2,10 +2,14 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
-import { qs } from "../data/question_content"
+import { getResults, qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
+<<<<<<< HEAD
 import React, { useState, useContext } from "react";
 import AppContext from '../src/context/AppContext';
+=======
+import React, { useState, useEffect} from "react";
+>>>>>>> origin
 
 export const Layout = styled.div`
     display: flex;
@@ -41,8 +45,22 @@ export default function Questions() {
 
     const r = useRouter();
     const [OverlayOpen, setOverlayOpen] = useState(false);
+<<<<<<< HEAD
     const { optionChosen, setOptionChosen } = useContext(AppContext);
     const { total, setTotal } = useContext(AppContext);
+=======
+
+    useEffect(() => {
+        if (!r.isReady) return;
+        r.push({
+            pathname: "/questions",
+            query: {
+                qnum: 0
+            }
+        })
+    }, [])
+
+>>>>>>> origin
     var { qnum } = r.query;
 
 
@@ -109,8 +127,13 @@ export default function Questions() {
                     className="default"
                     onClick={
                         () => {
+<<<<<<< HEAD
                             setOverlayOpen(true);
                             setTotal(total+optionChosen);
+=======
+                            setOverlayOpen(true)
+                            getResults()
+>>>>>>> origin
                         }
                     }
                 >See your score</button>

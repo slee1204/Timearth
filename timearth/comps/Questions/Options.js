@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { useRouter } from "next/router";
-import React, {useState, useContext} from 'react';
-import { qs } from '../../data/question_content';
-import AppContext from '../../src/context/AppContext';
+import { storeChoice } from '../../data/question_content';
+import React, { useState } from 'react'
 
 export const OptionTitle = styled.h2`
     margin-top: 0;
@@ -30,15 +29,14 @@ export const OptionCont = styled.div`
     align-items: center;
     flex-wrap: wrap;
 `
+export const DropDown = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
 
-
-export default function Options(
-    {
-        q = "question",
-        arr = [],
-        c = "category"
-    }
-) {
+export default function Options({ q = "question", arr = [], c = "category" }) {
+    const [selectedVal, setSelectedVal] = useState();
     const r = useRouter();
     var { qnum } = r.query;
 
@@ -46,8 +44,41 @@ export default function Options(
         qnum = 0;
     }
 
+    if ((qnum == 6) || (qnum == 8)) {
+        return <div>
+            <h1>{c}</h1>
+            <OptionTitle>
+                {q}
+            </OptionTitle>
+            <OptionCont>
+                {
+                    arr.map((o, i) => <OptionBtn key={o.txt}>{o.txt}
+                        <div>
+                            <select onChange={
+                                (e) => {
+                                    setSelectedVal()
+                                    storeChoice(qnum, e.target.value)
+                                }
+                            }>
+                                <option >0</option>
+                                <option >1</option>
+                                <option >2</option>
+                                <option >3</option>
+                                <option >4</option>
+                            </select>
+                            {
+                                (qnum == 6) && <span className='unit'>mins</span>
+                            }
 
-    const { optionChosen, setOptionChosen } = useContext(AppContext);
+                            {
+                                (qnum == 8) && <span className='unit'>items</span>
+                            }
+                        </div>
+                    </OptionBtn>)
+                }
+            </OptionCont>
+        </div>
+    }
 
     return <div>
         <h1>{c}</h1>
@@ -56,16 +87,21 @@ export default function Options(
         </OptionTitle>
         <OptionCont>
             {
-                arr.map((o, i) => <OptionBtn onClick={()=> {
-                    setOptionChosen(o.score);
-                }}>{o.txt}
-                    <input
+                arr.map((o, i) => <OptionBtn key={o.txt}>{o.txt}
+                    <input onClick={
+                        () => {
+                            setSelectedVal(o.score)
+                            storeChoice(qnum, o.score)
+                        }
+                    }
+                        value={selectedVal}
                         type='radio'
                         className='radio'
                         name='selected' />
                 </OptionBtn>)
             }
         </OptionCont>
+
+
     </div>
 }
-
