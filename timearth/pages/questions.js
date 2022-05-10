@@ -4,7 +4,7 @@ import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
 import { getResults, qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 export const Layout = styled.div`
     display: flex;
@@ -36,6 +36,7 @@ export const SkipButton = styled.div`
     top: 45px;
 `
 
+
 export default function Questions() {
 
     const r = useRouter();
@@ -46,12 +47,13 @@ export default function Questions() {
         r.push({
             pathname: "/questions",
             query: {
-                qnum: 0
+                qnum: 0,
+                type: qs[0].cat
             }
         })
     }, [])
 
-    var { qnum } = r.query;
+    var { qnum, type } = r.query;
 
     if (qnum === undefined) {
         qnum = 0;
@@ -95,6 +97,7 @@ export default function Questions() {
                                 pathname: "/questions",
                                 query: {
                                     qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
+                                    type: qs[Number(qnum) + 1].cat
                                 }
                             })
                         }
