@@ -68,18 +68,19 @@ export default function Questions() {
                     }
                 }
             >Back</BackButton>
-            <SkipButton
+            {Number(qnum) < qs.length - 1 && <SkipButton
                 onClick={
                     () => {
                         r.push({
                             pathname: "/questions",
                             query: {
                                 qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
+                                type: qs[Number(qnum) + 1].cat
                             }
                         })
                     }
                 }
-            >Skip</SkipButton>
+            >Skip</SkipButton>}
             <Breadcrumb />
             <Options
                 q={qs[qnum].title}
