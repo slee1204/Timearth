@@ -117,11 +117,6 @@ button {
   flex-direction: column;
 }
 
-.radio {
-  width: 28px;
-  height: 28px;
-  border: 2px solid #dadada;
-}
 
 .unit {
   margin-left: 5px;
