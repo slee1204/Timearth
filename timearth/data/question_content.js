@@ -1,18 +1,13 @@
 var answers = [];
 
 export function storeChoice(cnum, score) {  
-
     answers[cnum] = score;
     console.log(answers);
-
 }
 
 export function getResults(cnum, score) {
-
     answers[cnum] = score;
-
-    // var res_sum = (answers[0] + answers[1] + answers[2] + answers[3] + answers[4] + answers[5] + answers[6] + answers[7] + answers[8] + answers[9] + answers[10] + answers[11])
-
+    
     var initialValue = 0;
     var res_sum = Number(answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue));
 
@@ -33,6 +28,18 @@ export function getResults(cnum, score) {
     }
 
     console.log(res_sum)
+}
+
+export function convertToScore(input_sum) {
+    if (input_sum <= 20) {
+        return 4
+    } else if ((input_sum > 20) && (input_sum <= 40)) {
+        return 3
+    } else if ((input_sum > 40) && (input_sum <= 60)) {
+        return 2
+    } else if ((input_sum > 60) && (input_sum <= 80)) {
+        return 1
+    } else return 0
 }
 
 export const result = {
