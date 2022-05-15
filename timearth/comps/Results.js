@@ -3,6 +3,18 @@ import styled from 'styled-components';
 import React, { useState } from "react";
 import { goodResults, badResults } from '../data/res_content'
 
+
+const DimBG = {
+    background: 'rgba(0,0,0,0.7)',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    "flex-direction": 'column',
+    "justify-content": 'space-around',
+    "align-items": 'center',
+    position: 'absolute'
+}
+
 const Overlay = styled.div`
     max-width: 50%;
     min-width: 330px;
@@ -51,7 +63,8 @@ const Button = styled.button`
 
 export function Good(props) {
 
-    return (props.trigger) ? (<Overlay>
+    return (props.trigger) ? (<div style = {DimBG}>
+    <Overlay>
         <Header>{goodResults[0].header}</Header>
         <img src="/transportation.svg"></img>
         <SubHeader>{goodResults[0].title}</SubHeader>
@@ -65,12 +78,13 @@ export function Good(props) {
             }
         >Close</Button>
         {props.children}
-    </Overlay>) : ""
+    </Overlay> </div>) : ""
 }
 
 export function Bad(props) {
 
-    return (props.trigger) ? (<Overlay>
+    return (props.trigger) ? (<div style = {DimBG}>
+    <Overlay>
         <Header>{badResults[0].header}</Header>
         <img src="/Water.svg"></img>
         <SubHeader>{badResults[2].title}</SubHeader>
@@ -84,5 +98,5 @@ export function Bad(props) {
             }
         >Close</Button>
         {props.children}
-    </Overlay>) : ""
+    </Overlay> </div>) : ""
 }
