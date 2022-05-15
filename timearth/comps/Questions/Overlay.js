@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
 import { getResults } from "../../data/question_content";
+import { Challenges } from "../../data/challenge_content";
 
 const Background = styled.div`
     background-color: black;
@@ -106,7 +107,7 @@ export function DateButton(props) {
 }
 
 export default function Overlay(props) {
-
+    const [ch, SetCh] = useState(true);
     const r = useRouter();
     if(props.type === "result") {
     return (props.trigger) ? (<div>
@@ -134,8 +135,8 @@ export default function Overlay(props) {
 }
 if(props.type === "challenge") {
     return (props.trigger) ? (<div>
-        <Background></Background>
-        <OverlayComp>
+        <Background></Background>       
+        { ch && <OverlayComp>
             <Header>Start Challenge</Header>
             <H2>Choose the days that you will complete this challenge.</H2>
             <DateCont>
@@ -151,11 +152,32 @@ if(props.type === "challenge") {
                 className="primary large"
                 onClick={
                     (e) => {
-                        
+                       SetCh(!ch);
                     }
                 }>Start</Button>
+                
             {props.children}
-        </OverlayComp>         </div>) : "";
+        </OverlayComp> }
+        { !ch && <OverlayComp>
+            <Header>Good Luck!</Header>
+            <H2>This challenge will increase the Earth's Lifespan by</H2>
+            <DateCont>
+            <Time>
+                <Logo src="/logomark.svg" />
+                <Result>{Challenges[0].time} mins</Result>
+            </Time>
+            </DateCont>
+            <Button
+                className="primary large"
+                onClick={
+                    (e) => {
+                       props.setTrigger(false);
+                    }
+                }>Close</Button>
+                
+            {props.children}
+        </OverlayComp> }
+        </div>) : "";
 }
 }
 

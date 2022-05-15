@@ -51,12 +51,12 @@ export default function ChallengeCont(
         <Button className={startbtn ? "secondary small started" : "secondary small"}
         onClick={
             ()=> {
-                // setStartbtn(!startbtn); 
+                setStartbtn(!startbtn); 
                 setChallenge(true)}
 
         }>
          {startbtn ? "Started!" : "Start"}
         </Button>
-        <Overlay type="challenge" trigger={challenge}></Overlay>
+        <Overlay type="challenge" trigger={challenge} setTrigger={setChallenge}></Overlay>
     </Challenge_cont>
 }
