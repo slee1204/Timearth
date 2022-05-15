@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
-import { Challenges } from "../data/challenge_content";
+import { Challenges } from "../../data/challenge_content";
 import React, {useState} from "react";
-import Overlay from "./Questions/Overlay";
+import Overlay from "./Overlay"
 
 const Challenge_cont = styled.div`
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);

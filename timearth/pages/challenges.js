@@ -1,10 +1,10 @@
-import ChallengeCont from "../comps/Challenge_cont";
+import ChallengeCont from "../comps/Challenges/Challenge_cont";
 import { Hamburger, Menu } from "../comps/Menu";
 import React, {useState} from "react";
 import NavBar from "../comps/NavBar";
 import styled from 'styled-components';
 import { BtnText } from "../data/challenge_content";
-import ChallengesList from "../comps/Challenge_cont";
+import ChallengesList from "../comps/Challenges/Challenge_cont";
 
 export const Layout = styled.div`
     display: flex;
