@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
 import { getResults } from "../../data/question_content";
+import { Challenges } from "../../data/challenge_content";
 
 const Background = styled.div`
     background-color: black;
@@ -76,11 +77,39 @@ const H2 = styled.div`
 const Button = styled.button`
     margin: 1.5em;
 `
+const DateBtn = styled.div`
+background-color: {dbtn ? "#f0f0f0" : "#FF9042"};
+height: 2em;
+width:2em;
+margin:.2em;
+border-radius: 4px;
+font-weight:bold;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+`
+const DateCont = styled.div`
+display:flex;
+justify-content:space-between;`
+
+export function DateButton(props) {
+    const [dbtn, setDBtn] = useState(false);
+    return <DateBtn className={
+        dbtn ? "selected-date" : "" }
+        onClick={
+        ()=>{
+            setDBtn(!dbtn)
+        }
+    }>
+        {props.d}
+    </DateBtn>
+}
 
 export default function Overlay(props) {
-
+    const [ch, SetCh] = useState(true);
     const r = useRouter();
-
+    if(props.type === "result") {
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
@@ -103,6 +132,53 @@ export default function Overlay(props) {
                 }>Learn More</Button>
             {props.children}
         </OverlayComp>         </div>) : "";
+}
+if(props.type === "challenge") {
+    return (props.trigger) ? (<div>
+        <Background></Background>       
+        { ch && <OverlayComp>
+            <Header>Start Challenge</Header>
+            <H2>Choose the days that you will complete this challenge.</H2>
+            <DateCont>
+            <DateButton d="S"></DateButton>
+            <DateButton d="M"></DateButton>
+            <DateButton d="T"></DateButton>
+            <DateButton d="W"></DateButton>
+            <DateButton d="Th"></DateButton>
+            <DateButton d="F"></DateButton>
+            <DateButton d="Sa"></DateButton>
+            </DateCont>
+            <Button
+                className="primary large"
+                onClick={
+                    (e) => {
+                       SetCh(!ch);
+                    }
+                }>Start</Button>
+                
+            {props.children}
+        </OverlayComp> }
+        { !ch && <OverlayComp>
+            <Header>Good Luck!</Header>
+            <H2>This challenge will increase the Earth's Lifespan by</H2>
+            <DateCont>
+            <Time>
+                <Logo src="/logomark.svg" />
+                <Result>{Challenges[0].time} mins</Result>
+            </Time>
+            </DateCont>
+            <Button
+                className="primary large"
+                onClick={
+                    (e) => {
+                       props.setTrigger(false);
+                    }
+                }>Close</Button>
+                
+            {props.children}
+        </OverlayComp> }
+        </div>) : "";
+}
 }
 
 

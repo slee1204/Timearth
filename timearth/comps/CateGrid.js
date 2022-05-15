@@ -5,29 +5,29 @@ const GridComp = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90%;
+    max-width: 800px;
+    margin:auto;
+    padding-top:2em;
 `
 const CatCont = styled.div`
-    width: 110px;
-    height: 110px;
-    margin: 0.7em;
+    // width: 110px;
+    // height: auto;
 
-    @media only screen and (max-width: 600px) and (max-height: 750px) {
-        width; 70px;
-        height: 70px;
-    }
-    @media only screen and (min-width: 700px) {
-        width: 150px;
-        height: 150px;
-    }
-    @media only screen and (min-width: 1024px) {
-        width: 180px;
-        height: 180px;
-    }
+    // @media only screen and (max-width: 600px) and (max-height: 750px) {
+    //     width; 70px;
+    // }
+    // @media only screen and (min-width: 700px) {
+    //     width: 150px;
+    // }
+    // @media only screen and (min-width: 1024px) {
+    //     width: 180px;
+    // }
+    padding:1em;
+    flex: 1 1 0;
 `
 const CatImg = styled.img`
-    height: 70%;
-    width: 70%;
+    height: 40%;
+    width:auto;
 `
 const CatName = styled.div`
     font-weight: 600;

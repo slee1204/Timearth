@@ -117,6 +117,16 @@ button {
   flex-direction: column;
 }
 
+.selected-date {
+  color:#ffffff;
+  background-color: #ff9042;
+}
+
+.radio {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #dadada;
+}
 
 .unit {
   margin-left: 5px;

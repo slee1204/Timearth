@@ -141,7 +141,7 @@ export default function Questions() {
                 >See your score</BtnLarge>
             }
             <div className="background-shape"></div>
-            <Overlay trigger={OverlayOpen}></Overlay>
+            <Overlay type="result" trigger={OverlayOpen}></Overlay>
         </Layout>
     )
 }
