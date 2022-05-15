@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { goodResults, badResults } from '../data/res_content'
 
 const Overlay = styled.div`
-    max-width: 70%;
+    max-width: 50%;
+    min-width: 330px;
     height: fit-content;
     background: white;
     border-radius: 8px;
@@ -35,10 +36,12 @@ const Header = styled.div`
 
 const SubHeader = styled.h2`
     margin: 0em;
+    padding: 0 30px;
 `
 
 const Desc = styled.h2`
     font-weight: 400;
+    padding: 0 30px;
 `
 
 
@@ -60,7 +63,7 @@ export function Good(props) {
                     props.setTrigger(false)
                 }
             }
-        >Back</Button>
+        >Close</Button>
         {props.children}
     </Overlay>) : ""
 }
@@ -69,9 +72,9 @@ export function Bad(props) {
 
     return (props.trigger) ? (<Overlay>
         <Header>{badResults[0].header}</Header>
-        <img src="/Waste.svg"></img>
-        <SubHeader>{badResults[0].title}</SubHeader>
-        <Desc>{badResults[0].desc}</Desc>
+        <img src="/Water.svg"></img>
+        <SubHeader>{badResults[2].title}</SubHeader>
+        <Desc>{badResults[2].desc}</Desc>
         <Button
             className="primary large"
             onClick={
@@ -79,7 +82,7 @@ export function Bad(props) {
                     props.setTrigger(false)
                 }
             }
-        >Back</Button>
+        >Close</Button>
         {props.children}
     </Overlay>) : ""
 }
