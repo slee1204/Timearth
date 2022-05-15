@@ -1,3 +1,5 @@
+import CountUp from 'react-countup';
+
 var answers = [];
 
 export function storeChoice(cnum, score) {  
@@ -7,24 +9,182 @@ export function storeChoice(cnum, score) {
 
 export function getResults(cnum, score) {
     answers[cnum] = score;
-    
+
     var initialValue = 0;
     var res_sum = Number(answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue));
 
     if ((res_sum === undefined) || (0 <= res_sum) && (res_sum <= 11)) {
-        return result.Bad.text 
+        return (<div style = {{width: "175px"}}>
+          <CountUp
+          start = {99.00}
+          end = {10}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+              
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {8}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>) 
     }
      
     if ((res_sum > 11) && (res_sum <= 23)){
-        return result.Okay.text
+        return (<div style = {{width: "175px"}}>
+          <CountUp
+          start = {99.00}
+          end = {10}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+              
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {8}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>)
     }
      
     if ((res_sum > 23) && (res_sum <= 35)){
-        return result.Good.text
+        return (<div style = {{width: "175px"}}>
+          <CountUp
+          start = {99.00}
+          end = {10}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+              
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {7}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>)
     }
      
     if (res_sum > 35) {
-        return result.Excellent.text
+        return (<div style = {{width: "175px"}}>
+          <CountUp
+          start = {99.00}
+          end = {10}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+                <span ref={countUpRef} />
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {8}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>)
     }
 
     console.log(res_sum)
