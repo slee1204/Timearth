@@ -17,7 +17,7 @@ export function getResults(cnum, score) {
         return (<div style = {{width: "175px"}}>
           <CountUp
           start = {99.00}
-          end = {10}
+          end = {0}
           duration = {1.5}
           decimal = {2}
           >
@@ -61,7 +61,7 @@ export function getResults(cnum, score) {
         return (<div style = {{width: "175px"}}>
           <CountUp
           start = {99.00}
-          end = {10}
+          end = {5}
           duration = {1.5}
           decimal = {2}
           >
@@ -149,7 +149,7 @@ export function getResults(cnum, score) {
         return (<div style = {{width: "175px"}}>
           <CountUp
           start = {99.00}
-          end = {10}
+          end = {20}
           duration = {1.5}
           decimal = {2}
           >
@@ -202,21 +202,21 @@ export function convertToScore(input_sum) {
     } else return 0
 }
 
-export const result = {
+// export const result = {
 
-    Excellent: {
-        text: "00:20:00"
-    },
-    Good: {
-        text: "00:10:00"
-    },
-    Okay: {
-        text: "00:05:00"
-    },
-    Bad: {
-        text: "00:00:00"
-    }
-}
+//     Excellent: {
+//         text: "00:20:00"
+//     },
+//     Good: {
+//         text: "00:10:00"
+//     },
+//     Okay: {
+//         text: "00:05:00"
+//     },
+//     Bad: {
+//         text: "00:00:00"
+//     }
+// }
 
 export const qs = [
     {
