@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import React, { useState } from "react";
 import { getResults } from "../../data/question_content";
 import { Challenges } from "../../data/challenge_content";
+import { FaTimesCircle } from "react-icons/fa";
 
 const Background = styled.div`
     background-color: black;
@@ -47,6 +48,17 @@ const Header = styled.div`
     border-radius: 8px 8px 0 0;
     position: relative;
 `
+
+const CloseBtn = styled(FaTimesCircle)`
+    width: 25px;
+    height: 25px;
+    color: white;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor:pointer;
+`
+
 const Logo = styled.img`
     width: 3em;
     margin: .3em;
@@ -114,6 +126,13 @@ export default function Overlay(props) {
         <Background></Background>
         <OverlayComp>
             <Header>Today’s Results</Header>
+            <CloseBtn
+            onClick={
+                () => {
+                    props.setTrigger(false)
+                }
+            }
+            ></CloseBtn>
             <H2>You have increased the Earth’s lifespan by</H2>
             <Time>
                 <Logo src="/logomark.svg" />
@@ -137,7 +156,8 @@ if(props.type === "challenge") {
     return (props.trigger) ? (<div>
         <Background></Background>       
         { ch && <OverlayComp>
-            <Header>Start Challenge</Header>
+            
+            <Header>Start Challenge</Header><CloseBtn />
             <H2>Choose the days that you will complete this challenge.</H2>
             <DateCont>
             <DateButton d="S"></DateButton>
