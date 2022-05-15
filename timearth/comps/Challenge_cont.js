@@ -13,7 +13,7 @@ const Challenge_cont = styled.div`
     padding: 10px;
     padding-top: 0;
     text-align: left;
-    margin-bottom: 1em;
+    margin: 0.5em;
 `
 
 const ChallengeHeader = styled.div`
