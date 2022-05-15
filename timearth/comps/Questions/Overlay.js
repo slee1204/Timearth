@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { getResults } from "../../data/question_content";
 import { Challenges } from "../../data/challenge_content";
 import { FaTimesCircle } from "react-icons/fa";
+import { qs } from "../../data/question_content";
 
 const Background = styled.div`
     background-color: black;
@@ -121,17 +122,18 @@ export function DateButton(props) {
 export default function Overlay(props) {
     const [ch, SetCh] = useState(true);
     const r = useRouter();
+
     if(props.type === "result") {
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
             <Header>Today’s Results</Header>
             <CloseBtn
-            onClick={
-                () => {
-                    props.setTrigger(false)
+                onClick = {
+                    () => {
+                        
+                    }
                 }
-            }
             ></CloseBtn>
             <H2>You have increased the Earth’s lifespan by</H2>
             <Time>
