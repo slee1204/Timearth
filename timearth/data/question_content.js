@@ -45,16 +45,16 @@ export function convertToScore(input_sum) {
 export const result = {
 
     Excellent: {
-        text: "00:20:00"
+        text: "20"
     },
     Good: {
-        text: "00:10:00"
+        text: "10"
     },
     Okay: {
-        text: "00:05:00"
+        text: "05"
     },
     Bad: {
-        text: "00:00:00"
+        text: "00"
     }
 }
 
