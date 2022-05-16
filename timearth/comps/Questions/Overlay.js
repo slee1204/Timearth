@@ -46,6 +46,17 @@ const Header = styled.div`
     border-radius: 8px 8px 0 0;
     position: relative;
 `
+
+// const CloseBtn = styled(FaTimesCircle)`
+//     width: 25px;
+//     height: 25px;
+//     color: white;
+//     position: absolute;
+//     right: 5px;
+//     top: 5px;
+//     cursor:pointer;
+// `
+
 const Logo = styled.img`
     width: 3em;
     margin: .3em;
@@ -103,7 +114,3 @@ export default function Overlay(props) {
                 {props.children}
             </OverlayComp>         </div>) : "";
     }
-
-
-
-

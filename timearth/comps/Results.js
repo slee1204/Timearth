@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
-import { goodResults, badResults } from '../data/res_content'
-
+import { goodResults, badResults } from '../data/res_content';
+import { storeChoice } from "../data/question_content";
 
 const DimBG = {
     background: 'rgba(0,0,0,0.7)',
@@ -60,6 +60,54 @@ const Desc = styled.h2`
 const Button = styled.button`
     margin: 1em;
 `
+// export function greatResults() {
+
+//     var answers = [];
+//     if ( Number(answers[0]) + Number(answers[1]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[0].title
+//     }
+//     if ( Number(answers[2]) + Number(answers[3]) > Number(answers[0]) + Number(answers[1]) 
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[1].title
+//     }
+//     if ( Number(answers[4]) + Number(answers[5]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[0]) + Number(answers[1])
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[2].title
+//     }
+//     if ( Number(answers[6]) + Number(answers[7]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[0]) + Number(answers[1])
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[3].title
+//     }
+//     if ( Number(answers[8]) + Number(answers[9]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[0]) + Number(answers[1])
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[4].title
+//     }
+//     if ( Number(answers[10]) + Number(answers[11]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[0]) + Number(answers[1])) {
+//         return goodResults[5].title
+//     }
+// }
+
+
 
 export function Good(props) {
 
@@ -81,8 +129,11 @@ export function Good(props) {
     </Overlay> </div>) : ""
 }
 
-export function Bad(props) {
 
+
+
+
+export function Bad(props) {
     return (props.trigger) ? (<div style = {DimBG}>
     <Overlay>
         <Header>{badResults[0].header}</Header>
