@@ -9,7 +9,7 @@ const Background = styled.div`
     width: 100%;
     height: 100%;
     display: block;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     opacity: 0.7;

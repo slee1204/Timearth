@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { useRouter } from "next/router";
-import { storeChoice, convertToScore } from '../../data/question_content';
+import React, {useState, useContext} from 'react';
+import { qs } from '../../data/question_content';
+import AppContext from '../../src/context/AppContext';
+import { storeChoice, convertToScore, findGreatScore} from '../../data/question_content';
 import React, { useState, useEffect } from 'react'
 
 export const OptionTitle = styled.h2`
@@ -100,6 +103,8 @@ export default function Options({ q = "question", arr = [], c = "category", acti
         qnum = 0;
     }
 
+
+    const { optionChosen, setOptionChosen } = useContext(AppContext);
     if ((qnum == 6) || (qnum == 8)) {
         return <div>
             <h1>{c}</h1>
@@ -146,6 +151,14 @@ export default function Options({ q = "question", arr = [], c = "category", acti
         </OptionTitle>
         <OpsSection>
             {
+                arr.map((o, i) => <OptionBtn onClick={()=> {
+                    setOptionChosen(o.score);
+                }}>{o.txt}
+                    <input
+                        type='radio'
+                        className='radio'
+                        name='selected' />
+                </OptionBtn>)
                 arr.map((o, i) =>
                     <OptionCont
                         bg={buttonState === i ? ops_data.active.bg : ops_data.inactive.bg}

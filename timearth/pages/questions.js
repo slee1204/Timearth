@@ -4,6 +4,8 @@ import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
 import { getResults, qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
+import React, { useState, useContext } from "react";
+import AppContext from '../src/context/AppContext';
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, HiChevronRight } from 'react-icons/fa';
 
@@ -63,6 +65,9 @@ export default function Questions() {
 
     const r = useRouter();
     const [OverlayOpen, setOverlayOpen] = useState(false);
+    const { optionChosen, setOptionChosen } = useContext(AppContext);
+    const { total, setTotal } = useContext(AppContext);
+    var { qnum } = r.query;
 
     useEffect(() => {
         if (!r.isReady) return;
@@ -77,9 +82,13 @@ export default function Questions() {
 
     var { qnum, type } = r.query;
 
+
     if (qnum === undefined) {
         qnum = 0;
     }
+
+
+    
 
     return (
         <Layout>
@@ -123,7 +132,12 @@ export default function Questions() {
                                     qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
                                     type: qs[Number(qnum) + 1].cat
                                 }
-                            })
+                            });
+                            setTotal(total+optionChosen);
+                            // alert(total+optionChosen);
+                            console.log(total+optionChosen);
+                           
+                            
                         }
                     }
 
@@ -134,6 +148,8 @@ export default function Questions() {
                 <BtnLarge
                     onClick={
                         () => {
+                            setOverlayOpen(true);
+                            setTotal(total+optionChosen);
                             setOverlayOpen(true)
                             getResults()
                         }
