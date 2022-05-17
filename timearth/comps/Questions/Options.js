@@ -121,7 +121,7 @@ export default function Options({ q = "question", arr = [], c = "category", acti
                                         var input_sum = Number(e.target.value);
                                         var initialValue = 0;
                                         input_sum = Number(selectedVal.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue));
-                                        console.log(selectedVal, "Sum of the array is", input_sum);
+                                        console.log(selectedVal, "Sum of the array is " + input_sum);
                                         storeChoice(qnum, convertToScore(input_sum));
                                     }
                                 }
