@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { PageTitle, BtnText1, BtnText2 } from '../data/res_content'
 import NavBar from "../comps/NavBar";
 import { Hamburger, Menu } from "../comps/Menu";
-import React, { useState, useContext} from "react";
-import AppContext from "../src/context/AppContext";
+import React, { useState } from "react";
 import { Good, Bad } from "../comps/Results";
 
 const LayoutComp = styled.div`
@@ -94,8 +93,6 @@ export default function Result() {
     const [Overlayopen, setOverlayOpen2] = useState(false);
     const [open, setOpen] = React.useState(false);
     const node = React.useRef();
-    const { total, setTotal } = useContext(AppContext);
-
 
     return (
         <LayoutComp>
@@ -135,7 +132,11 @@ export default function Result() {
                 className="primary large"
                 onClick={
                     () => {
-                        window.location.href = "/intro"
+                        r.push(
+                            {
+                                pathname: "/"
+                            }
+                        )
                     }
                 }>{BtnText1}
             </Button>

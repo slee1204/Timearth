@@ -2,34 +2,10 @@ import CountUp from 'react-countup';
 
 var answers = [];
 
-export var BadScore = "";
-export var GreatScore = "";
-
 export function storeChoice(cnum, score) {  
     answers[cnum] = score;
-
     console.log(answers);
-    if(score === 4 && cnum % 2 === 0) {
-      GreatScore = cnum*0.5;
-      console.log(GreatScore);
-    }
-    if(score === 4 && cnum % 2 === 1) {
-      GreatScore = (cnum-1)*0.5;
-      console.log(GreatScore);
-    }
-
-    if (score === 1 && cnum % 2 === 0) {
-      BadScore = cnum*0.5;
-      console.log(BadScore);
-    }
-    if (score === 1 && cnum % 2 === 1) {
-      BadScore = (cnum-1)*0.5;
-      console.log(BadScore);
-    }
 }
-
-
-
 
 export function getResults(cnum, score) {
     answers[cnum] = score;

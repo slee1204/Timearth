@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { Challenges } from "../../data/challenge_content";
 import React, {useState} from "react";
-import Overlay from "./Overlay";
+import Overlay from "./Overlay"
 
 const Challenge_cont = styled.div`
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -52,8 +52,7 @@ export default function ChallengeCont(
         onClick={
             ()=> {
                 setStartbtn(!startbtn); 
-                setChallenge(true)
-            }
+                setChallenge(true)}
 
         }>
          {startbtn ? "Started!" : "Start"}

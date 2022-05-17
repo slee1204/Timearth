@@ -1,9 +1,5 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
-import React, { useState, useContext} from "react";
-import Questions from "../../pages/questions";
-import AppContext from "../../src/context/AppContext";
-
 import React, { useState } from "react";
 import { getResults } from "../../data/question_content";
 
@@ -20,7 +16,6 @@ const Background = styled.div`
 
 const OverlayComp = styled.div`
     background: white;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     color: #000000;
     display: flex;
@@ -96,8 +91,6 @@ const Button = styled.button`
 export default function Overlay(props) {
     
     const r = useRouter();
-    const { total, setTotal } = useContext(AppContext);
-
         return (props.trigger) ? (<div>
             <Background></Background>
             <OverlayComp>

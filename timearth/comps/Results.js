@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import React, { useState } from "react";
 import { goodResults, badResults } from '../data/res_content';
 import { storeChoice } from "../data/question_content";
-import { BadScore, GreatScore } from "../data/question_content";
 
 const DimBG = {
     background: 'rgba(0,0,0,0.7)',
@@ -21,7 +20,6 @@ const Overlay = styled.div`
     min-width: 330px;
     height: fit-content;
     background: white;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     color: #000000;
     display: flex;
@@ -116,9 +114,9 @@ export function Good(props) {
     return (props.trigger) ? (<div style = {DimBG}>
     <Overlay>
         <Header>{goodResults[0].header}</Header>
-        <img src={goodResults[GreatScore].src}></img>
-        <SubHeader>{goodResults[GreatScore].title}</SubHeader>
-        <Desc>{goodResults[GreatScore].desc}</Desc>
+        <img src="/transportation.svg"></img>
+        <SubHeader>{goodResults[0].title}</SubHeader>
+        <Desc>{goodResults[0].desc}</Desc>
         <Button
             className="primary large"
             onClick={
@@ -139,9 +137,9 @@ export function Bad(props) {
     return (props.trigger) ? (<div style = {DimBG}>
     <Overlay>
         <Header>{badResults[0].header}</Header>
-        <img src={badResults[BadScore].src}></img>
-        <SubHeader>{badResults[BadScore].title}</SubHeader>
-        <Desc>{badResults[BadScore].desc}</Desc>
+        <img src="/Water.svg"></img>
+        <SubHeader>{badResults[2].title}</SubHeader>
+        <Desc>{badResults[2].desc}</Desc>
         <Button
             className="primary large"
             onClick={
@@ -151,5 +149,5 @@ export function Bad(props) {
             }
         >Close</Button>
         {props.children}
-    </Overlay> : </div>) : ""
+    </Overlay> </div>) : ""
 }
