@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useRouter } from "next/router";
-import { storeChoice, convertToScore } from '../../data/question_content';
+import { storeChoice, convertToScore, findGreatScore} from '../../data/question_content';
 import React, { useState, useEffect } from 'react'
 
 export const OptionTitle = styled.h2`
