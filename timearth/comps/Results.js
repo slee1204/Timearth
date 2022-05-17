@@ -1,9 +1,24 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
+import { goodResults, badResults } from '../data/res_content';
+import { storeChoice } from "../data/question_content";
+import { BadScore, GreatScore } from "../data/question_content";
+
+const DimBG = {
+    background: 'rgba(0,0,0,0.7)',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    "flex-direction": 'column',
+    "justify-content": 'space-around',
+    "align-items": 'center',
+    position: 'absolute'
+}
 
 const Overlay = styled.div`
-    max-width: 70%;
+    max-width: 50%;
+    min-width: 330px;
     height: fit-content;
     background: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -14,6 +29,8 @@ const Overlay = styled.div`
     justify-content: space-around;
     align-items: center;
     position: absolute;
+    
+
 `
 const Header = styled.div`
     width: 100%;
@@ -33,24 +50,75 @@ const Header = styled.div`
 
 const SubHeader = styled.h2`
     margin: 0em;
+    padding: 0 30px;
 `
 
 const Desc = styled.h2`
     font-weight: 400;
+    padding: 0 30px;
 `
 
 
 const Button = styled.button`
     margin: 1em;
 `
+// export function greatResults() {
 
-export default function Results(props) {
+//     var answers = [];
+//     if ( Number(answers[0]) + Number(answers[1]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[0]) + Number(answers[1]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[0].title
+//     }
+//     if ( Number(answers[2]) + Number(answers[3]) > Number(answers[0]) + Number(answers[1]) 
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[2]) + Number(answers[3]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[1].title
+//     }
+//     if ( Number(answers[4]) + Number(answers[5]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[0]) + Number(answers[1])
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[4]) + Number(answers[5]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[2].title
+//     }
+//     if ( Number(answers[6]) + Number(answers[7]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[0]) + Number(answers[1])
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[6]) + Number(answers[7]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[3].title
+//     }
+//     if ( Number(answers[8]) + Number(answers[9]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[0]) + Number(answers[1])
+//         && Number(answers[8]) + Number(answers[9]) > Number(answers[10]) + Number(answers[11])) {
+//         return goodResults[4].title
+//     }
+//     if ( Number(answers[10]) + Number(answers[11]) > Number(answers[2]) + Number(answers[3]) 
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[4]) + Number(answers[5])
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[6]) + Number(answers[7])
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[8]) + Number(answers[9])
+//         && Number(answers[10]) + Number(answers[11]) > Number(answers[0]) + Number(answers[1])) {
+//         return goodResults[5].title
+//     }
+// }
 
-    return (props.trigger) ? (<Overlay>
-        <Header>Header</Header>
-        <img src="/transportation.svg"></img>
-        <SubHeader>You had plant-based meals for most of this week!</SubHeader>
-        <Desc> A global shift to a plant-based diet could reduce greenhouse gases caused by food production by 70% within 30 years.</Desc>
+
+
+export function Good(props) {
+
+    return (props.trigger) ? (<div style = {DimBG}>
+    <Overlay>
+        <Header>{goodResults[0].header}</Header>
+        <img src={goodResults[GreatScore].src}></img>
+        <SubHeader>{goodResults[GreatScore].title}</SubHeader>
+        <Desc>{goodResults[GreatScore].desc}</Desc>
         <Button
             className="primary large"
             onClick={
@@ -58,7 +126,30 @@ export default function Results(props) {
                     props.setTrigger(false)
                 }
             }
-        >Back</Button>
+        >Close</Button>
         {props.children}
-    </Overlay>) : ""
+    </Overlay> </div>) : ""
+}
+
+
+
+
+
+export function Bad(props) {
+    return (props.trigger) ? (<div style = {DimBG}>
+    <Overlay>
+        <Header>{badResults[0].header}</Header>
+        <img src={badResults[BadScore].src}></img>
+        <SubHeader>{badResults[BadScore].title}</SubHeader>
+        <Desc>{badResults[BadScore].desc}</Desc>
+        <Button
+            className="primary large"
+            onClick={
+                () => {
+                    props.setTrigger(false)
+                }
+            }
+        >Close</Button>
+        {props.children}
+    </Overlay> : </div>) : ""
 }

@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
-import { Challenges } from "../data/challenge_content";
+import { Challenges } from "../../data/challenge_content";
 import React, {useState} from "react";
+import Overlay from "./Overlay";
 
 const Challenge_cont = styled.div`
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -12,7 +13,7 @@ const Challenge_cont = styled.div`
     padding: 10px;
     padding-top: 0;
     text-align: left;
-    margin-bottom: 1em;
+    margin: 0.5em;
 `
 
 const ChallengeHeader = styled.div`
@@ -32,12 +33,14 @@ const ChallengeImg = styled.img`
     height: 80%;
 `
 
+
 export default function ChallengeCont(
     {
       chnum="0"  
     }
 ) {
-    const [startbtn, setStartbtn] = React.useState(false);
+    const [startbtn, setStartbtn] = useState(false);
+    const [challenge, setChallenge] = useState(false);
     return <Challenge_cont>                                                                                           
          <ChallengeHeader>
              <h2>{Challenges[chnum].title}</h2>
@@ -47,9 +50,14 @@ export default function ChallengeCont(
          <div>Earth minutes saved in a year: {Challenges[chnum].time} mins</div>
         <Button className={startbtn ? "secondary small started" : "secondary small"}
         onClick={
-            ()=> {setStartbtn(!startbtn)}
+            ()=> {
+                setStartbtn(!startbtn); 
+                setChallenge(true)
+            }
+
         }>
          {startbtn ? "Started!" : "Start"}
         </Button>
+        <Overlay type="challenge" trigger={challenge} setTrigger={setChallenge}></Overlay>
     </Challenge_cont>
 }

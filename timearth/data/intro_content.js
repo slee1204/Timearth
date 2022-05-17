@@ -1,6 +1,6 @@
-export const PageTitle = "Let’s Start!"
+export const PageTitle = ["Let's Learn About Earth Minutes!", "Let’s Start!"]
 
-export const BtnText = "Start Quiz"
+export const BtnText = ["Next", "Start Quiz"]
 
 export const cat1 = {
     title: "Transportation",

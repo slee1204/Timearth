@@ -1,36 +1,241 @@
-// export function totalResult(){
-//     var result = [];
+import CountUp from 'react-countup';
 
-//     for (var i =0; i < 47; i++){
-//         result.push(i+1)
+var answers = [];
 
-//     }
+export var BadScore = "";
+export var GreatScore = "";
 
-// }
-import { useRouter } from "next/router";
+export function storeChoice(cnum, score) {  
+    answers[cnum] = score;
 
-export function storeChoice(qnum, cnum) {
-  const r = useRouter();
-  var { qnum } = r.query;
-  
+    console.log(answers);
+    if(score === 4 && cnum % 2 === 0) {
+      GreatScore = cnum*0.5;
+      console.log(GreatScore);
+    }
+    if(score === 4 && cnum % 2 === 1) {
+      GreatScore = (cnum-1)*0.5;
+      console.log(GreatScore);
+    }
 
-  if (qnum === undefined) {
-    qnum = 0;
-  }
-  
-  ops[1] = cnum;
-
+    if (score === 1 && cnum % 2 === 0) {
+      BadScore = cnum*0.5;
+      console.log(BadScore);
+    }
+    if (score === 1 && cnum % 2 === 1) {
+      BadScore = (cnum-1)*0.5;
+      console.log(BadScore);
+    }
 }
 
-// arr = [
-//     0,
-//     1,
-//     2,
-//     3,
-//     4,
-//     5,
-//     6
-// ]
+
+
+
+export function getResults(cnum, score) {
+    answers[cnum] = score;
+
+    var initialValue = 0;
+    var res_sum = Number(answers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue));
+
+    if ((res_sum === undefined) || (0 <= res_sum) && (res_sum <= 11)) {
+        return (<div>
+          <CountUp
+          start = {99.00}
+          end = {0}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+                <span ref={countUpRef} />
+            )}
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+
+            )}
+      
+          </CountUp><CountUp
+          start = {8}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>) 
+    }
+     
+    if ((res_sum > 11) && (res_sum <= 23)){
+        return (<div>
+          <CountUp
+          start = {99.00}
+          end = {5}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+              
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {8}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>)
+    }
+     
+    if ((res_sum > 23) && (res_sum <= 35)){
+        return (<div>
+          <CountUp
+          start = {99.00}
+          end = {10}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+              
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {7}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>)
+    }
+     
+    if (res_sum > 35) {
+        return (<div>
+          <CountUp
+          start = {99.00}
+          end = {20}
+          duration = {1.5}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+                <span ref={countUpRef} />
+      
+            )}
+      
+          </CountUp> : <CountUp
+          start = {9}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp><CountUp
+          start = {8}
+          end = {0}
+          duration = {1}
+          decimal = {2}
+          >
+            {({ countUpRef, start}) => (
+            
+                <span ref={countUpRef} />
+              
+      
+            )}
+      
+          </CountUp> </div>)
+    }
+
+    console.log(res_sum)
+}
+
+export function convertToScore(input_sum) {
+    if (input_sum <= 20) {
+        return 4
+    } else if ((input_sum > 20) && (input_sum <= 40)) {
+        return 3
+    } else if ((input_sum > 40) && (input_sum <= 60)) {
+        return 2
+    } else if ((input_sum > 60) && (input_sum <= 80)) {
+        return 1
+    } else return 0
+}
+
+export const result = {
+
+    Excellent: {
+        text: "20"
+    },
+    Good: {
+        text: "10"
+    },
+    Okay: {
+        text: "05"
+    },
+    Bad: {
+        text: "00"
+    }
+}
 
 export const qs = [
     {
@@ -307,24 +512,3 @@ export const qs = [
         img: "/shopping.svg"
     },
   ];
-  // var answers = [];
-  
-  // export function changeAnswers(n, qscore) {
-  //     answers[qscore] = n;
-  //     console.log(answers);
-  // }
-  
-  // export function getAnswers() {
-  //     return answers;
-  // }
-  
-// var answers = [];
-
-// export function changeAnswers(n, qscore) {
-//     answers[qscore] = n;
-//     console.log(answers);
-// }
-
-// export function getAnswers() {
-//     return answers.score[i];
-// }

@@ -2,10 +2,12 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
-import { qs } from "../data/question_content"
+import { getResults, qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
 import React, { useState, useContext } from "react";
 import AppContext from '../src/context/AppContext';
+import React, { useState, useEffect } from "react";
+import { FaChevronLeft, HiChevronRight } from 'react-icons/fa';
 
 export const Layout = styled.div`
     display: flex;
@@ -16,26 +18,48 @@ export const Layout = styled.div`
 `
 
 export const BackButton = styled.div`
-    position: absolute;
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
-    line-height: 25px;
     cursor: pointer;
-    left: 14px;
-    top: 45px;
+    display: flex;
+    align-items: center;
 `
+
 export const SkipButton = styled.div`
-    position: absolute;
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
-    line-height: 25px;
     cursor: pointer;
-    color: #BFBFBF;
-    right: 30px;
-    top: 45px;
+    color: #C4C4C4;
 `
+
+const StyledIcon = styled(FaChevronLeft)`
+    width: 60%;
+    height: 60%;
+`
+
+const BtnLarge = styled.button`
+    background-color: ${props => props.bg || "#DADADA"};;
+    position: absolute;
+    bottom: 15.88%;
+`
+
+export const TopBtns = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`
+
+const btn_data = {
+    inactive: {
+        bg: "#EDEDED",
+    },
+    active: {
+        bg: "#FFFFFF",
+    }
+}
+
 
 export default function Questions() {
 
@@ -44,6 +68,19 @@ export default function Questions() {
     const { optionChosen, setOptionChosen } = useContext(AppContext);
     const { total, setTotal } = useContext(AppContext);
     var { qnum } = r.query;
+
+    useEffect(() => {
+        if (!r.isReady) return;
+        r.push({
+            pathname: "/questions",
+            query: {
+                qnum: 0,
+                type: qs[0].cat
+            }
+        })
+    }, [])
+
+    var { qnum, type } = r.query;
 
 
     if (qnum === undefined) {
@@ -55,42 +92,45 @@ export default function Questions() {
 
     return (
         <Layout>
-            <BackButton
-                onClick={
-                    () => {
-                        r.back()
-                    }
-                }
-            >Back</BackButton>
-            <SkipButton
-                onClick={
-                    () => {
-                        r.push({
-                            pathname: "/questions",
-                            query: {
-                                qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
+            <TopBtns>
+                <BackButton
+                    onClick={() => { r.back() }}>
+                    <StyledIcon />
+                    <span>Back</span>
+                </BackButton>
+                {
+                    Number(qnum) < qs.length - 1 && <SkipButton
+                        onClick={
+                            () => {
+                                r.push({
+                                    pathname: "/questions",
+                                    query: {
+                                        qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
+                                        type: qs[Number(qnum) + 1].cat
+                                    }
+                                })
                             }
-                        })
-                    }
+                        }>Skip</SkipButton>
                 }
-            >Skip</SkipButton>
+            </TopBtns>
             <Breadcrumb />
             <Options
                 q={qs[qnum].title}
                 arr={qs[qnum].ops}
                 c={qs[qnum].cat}
+                active ={true}
             />
-
             {
                 Number(qnum) < qs.length - 1 &&
-                <button
-                    className="default"
+                <BtnLarge
+                    bg={btn_data.inactive.bg}
                     onClick={
                         () => {
                             r.push({
                                 pathname: "/questions",
                                 query: {
                                     qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
+                                    type: qs[Number(qnum) + 1].cat
                                 }
                             });
                             setTotal(total+optionChosen);
@@ -101,22 +141,23 @@ export default function Questions() {
                         }
                     }
 
-                >Next</button>
+                >Next</BtnLarge>
             }
             {
                 Number(qnum) >= qs.length - 1 &&
-                <button
-                    className="default"
+                <BtnLarge
                     onClick={
                         () => {
                             setOverlayOpen(true);
                             setTotal(total+optionChosen);
+                            setOverlayOpen(true)
+                            getResults()
                         }
                     }
-                >See your score</button>
+                >See your score</BtnLarge>
             }
             <div className="background-shape"></div>
-            <Overlay trigger={OverlayOpen}></Overlay>
+            <Overlay type="result" trigger={OverlayOpen}></Overlay>
         </Layout>
     )
 }
