@@ -4,7 +4,8 @@ import { PageTitle, BtnText1, BtnText2 } from '../data/res_content'
 import NavBar from "../comps/NavBar";
 import { Hamburger, Menu } from "../comps/Menu";
 import React, { useState } from "react";
-import { Good, Bad } from "../comps/Results";
+import Overlay, { Good, Bad } from "../comps/Results/Overlay";
+import { goodResults } from '../data/res_content'
 
 const LayoutComp = styled.div`
     display: flex;
@@ -108,7 +109,8 @@ export default function Result() {
                     <Card
                         onClick={
                             () => {
-                                setOverlayOpen1(true)
+                                setOverlayOpen1(true);
+
                             }
                         }>
                         <Img src="/HappyEarth.svg" alt="Happy Earth" />
@@ -120,7 +122,7 @@ export default function Result() {
                     <Card
                         onClick={
                             () => {
-                                setOverlayOpen2(true)
+                                setOverlayOpen2(true);
                             }
                         }>
                         <Img src="/SadEarth.svg" alt="Sad Earth" />
@@ -152,8 +154,9 @@ export default function Result() {
                     }
                 }>{BtnText2}
             </Button>
-            <Good trigger={OverlayOpen} setTrigger={setOverlayOpen1}></Good>
-            <Bad trigger={Overlayopen} setTrigger={setOverlayOpen2}></Bad>
+            <Overlay trigger={OverlayOpen} setTrigger={setOverlayOpen1}/>
+            {/* <Good trigger={OverlayOpen} setTrigger={setOverlayOpen1}></Good>
+            <Bad trigger={Overlayopen} setTrigger={setOverlayOpen2}></Bad> */}
         </LayoutComp>
     )
 }
