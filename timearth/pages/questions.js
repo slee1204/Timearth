@@ -136,7 +136,6 @@ export default function Questions() {
                         () => {
                             setOverlayOpen(true)
                             getResults();
-                            getScore();
                         }
                     }
                 >See your score</BtnLarge>
