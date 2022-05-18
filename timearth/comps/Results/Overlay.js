@@ -1,9 +1,8 @@
-import { useRouter } from "next/router";
 import styled from 'styled-components';
-import React, { useState } from "react";
-import { goodResults, badResults, showGoodResults } from '../../data/res_content';
-import { HeaderTxt } from "../../data/res_content"
-import { getScore, showResults } from "../../data/question_content";
+import React from "react";
+import { HeaderTxt, goodResults, badResults } from '../../data/res_content';
+import { getScore } from "../../data/question_content";
+import { catData } from "../../data/global_content"
 
 const Background = styled.div`
     background-color: black;
@@ -61,15 +60,18 @@ const Desc = styled.h2`
 const Button = styled.button`
     margin: 1em;
 `
-export default function Overlay(props) {
 
- const scores = getScore();
+const Img = styled.img`
+    padding: 10pt;
+`
+const scores = getScore();
 
+export function Good(props) {
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
             <Header>{HeaderTxt.good.txt}</Header>
-            <img src="/transportation.svg"></img>
+            <Img src={catData[scores.high].src}></Img>
             <SubHeader>{goodResults[scores.high].title}</SubHeader>
             <Desc>{goodResults[scores.high].desc}</Desc>
             <Button
@@ -77,7 +79,6 @@ export default function Overlay(props) {
                 onClick={
                     () => {
                         props.setTrigger(false);
-
                     }
                 }
             >Close</Button>
@@ -85,51 +86,22 @@ export default function Overlay(props) {
         </OverlayComp> </div>) : ""
 }
 
-
-
-// export function Good(props) {
-
-//     return (props.trigger) ? (<div style = {DimBG}>
-//     <Overlay>
-//         <Header>{goodResults[0].header}</Header>
-//         <img src="/transportation.svg"></img>
-//             <SubHeader onChange={
-//                 () => {
-//                     getHighest();
-//                 }
-//             }></SubHeader>
-//         <Desc>{goodResults[0].desc}</Desc>
-//         <Button
-//             className="primary large"
-//             onClick={
-//                 () => {
-//                     props.setTrigger(false)
-//                 }
-//             }
-//         >Close</Button>
-//         {props.children}
-//     </Overlay> </div>) : ""
-// }
-
-
-
-
-
-// export function Bad(props) {
-//     return (props.trigger) ? (<div style = {DimBG}>
-//     <Overlay>
-//         <Header>{badResults[0].header}</Header>
-//         <img src="/Water.svg"></img>
-//         <SubHeader>{badResults[2].title}</SubHeader>
-//         <Desc>{badResults[2].desc}</Desc>
-//         <Button
-//             className="primary large"
-//             onClick={
-//                 () => {
-//                     props.setTrigger(false)
-//                 }
-//             }
-//         >Close</Button>
-//         {props.children}
-//     </Overlay> </div>) : ""
-// }
+export function Bad(props) {
+    return (props.trigger) ? (<div>
+        <Background></Background>
+        <OverlayComp>
+            <Header>{HeaderTxt.bad.txt}</Header>
+            <Img src={catData[scores.low].src}></Img>
+            <SubHeader>{badResults[scores.low].title}</SubHeader>
+            <Desc>{badResults[scores.low].desc}</Desc>
+            <Button
+                className="primary large"
+                onClick={
+                    () => {
+                        props.setTrigger(false);
+                    }
+                }
+            >Close</Button>
+            {props.children}
+        </OverlayComp> </div>) : ""
+}

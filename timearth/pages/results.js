@@ -4,8 +4,7 @@ import { PageTitle, BtnText1, BtnText2 } from '../data/res_content'
 import NavBar from "../comps/NavBar";
 import { Hamburger, Menu } from "../comps/Menu";
 import React, { useState } from "react";
-import Overlay, { Good, Bad } from "../comps/Results/Overlay";
-import { goodResults } from '../data/res_content'
+import { Good, Bad } from "../comps/Results/Overlay"
 
 const LayoutComp = styled.div`
     display: flex;
@@ -91,7 +90,7 @@ export default function Result() {
 
     const r = useRouter();
     const [OverlayOpen, setOverlayOpen1] = useState(false);
-    const [Overlayopen, setOverlayOpen2] = useState(false);
+    const [OverlayOpen2, setOverlayOpen2] = useState(false);
     const [open, setOpen] = React.useState(false);
     const node = React.useRef();
 
@@ -136,7 +135,7 @@ export default function Result() {
                     () => {
                         r.push(
                             {
-                                pathname: "/"
+                                pathname: "/intro"
                             }
                         )
                     }
@@ -154,9 +153,8 @@ export default function Result() {
                     }
                 }>{BtnText2}
             </Button>
-            <Overlay trigger={OverlayOpen} setTrigger={setOverlayOpen1}/>
-            {/* <Good trigger={OverlayOpen} setTrigger={setOverlayOpen1}></Good>
-            <Bad trigger={Overlayopen} setTrigger={setOverlayOpen2}></Bad> */}
+            <Good trigger={OverlayOpen} setTrigger={setOverlayOpen1}></Good>
+            <Bad trigger={OverlayOpen2} setTrigger={setOverlayOpen2}></Bad>
         </LayoutComp>
     )
 }

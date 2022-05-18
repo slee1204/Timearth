@@ -1,7 +1,3 @@
-import { getHighest, getLowest } from "./question_content";
-import { getScore } from "./question_content";
-
-
 export const PageTitle = "Today's Result";
 export const BtnText1 = "Start Over";
 export const BtnText2 = "See Challenges";
