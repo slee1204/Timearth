@@ -1,19 +1,20 @@
 import CountUp from 'react-countup';
 
 var answers = [];
+// var newArr = [];
 
 export function storeChoice(cnum, score) {
     answers[cnum] = score;
     console.log(answers);
-}
-
-export function getScore() {
+    
     for (var i = 0; i < answers.length; i++) {
         if (answers[i] === undefined) {
             answers[i] = 0;
         }
     }
+}
 
+export function getScore() {
     var newArr = [
         answers[0] + answers[1],
         answers[2] + answers[3],
@@ -28,6 +29,7 @@ export function getScore() {
             newArr[j] = 0;
         }
     }
+    console.log(newArr);
 
     var highestScore = Math.max(...newArr);
     var lowestScore = Math.min(...newArr)
@@ -35,7 +37,7 @@ export function getScore() {
     var indexOfHighest = newArr.indexOf(highestScore);
     var indexOfLowest = newArr.indexOf(lowestScore);
 
-    console.log(newArr);
+
     console.log("The highest score is: " + highestScore, "at index " + indexOfHighest);
     console.log("The lowest score is: " + lowestScore, "at index " + indexOfLowest);
 }

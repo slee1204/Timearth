@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
-import { getScore, getResults, qs } from "../data/question_content"
+import { getScore, getResults, qs, storeChoice } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, HiChevronRight } from 'react-icons/fa';
@@ -136,6 +136,7 @@ export default function Questions() {
                         () => {
                             setOverlayOpen(true)
                             getResults();
+                            getScore();
                         }
                     }
                 >See your score</BtnLarge>
