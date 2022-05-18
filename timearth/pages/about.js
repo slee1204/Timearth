@@ -28,8 +28,8 @@ const DescCont = styled.div`
 
 export default function About() {
 
-    const [open, setOpen] = React.useState(false);
-    const node = React.useRef();
+    const [open, setOpen] = useState(false);
+    const node = useRef();
 
     const r = useRouter();
     return (
