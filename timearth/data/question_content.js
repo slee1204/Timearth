@@ -40,6 +40,11 @@ export function getScore() {
 
     console.log("The highest score is: " + highestScore, "at index " + indexOfHighest);
     console.log("The lowest score is: " + lowestScore, "at index " + indexOfLowest);
+    
+    return {
+        high: indexOfHighest,
+        low: indexOfLowest
+    }
 }
 
 export function getResults(cnum, score) {
