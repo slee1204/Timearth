@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { goodResults, badResults, showGoodResults } from '../../data/res_content';
 import { HeaderTxt } from "../../data/res_content"
 import { getScore, showResults } from "../../data/question_content";
@@ -62,6 +63,9 @@ const Button = styled.button`
     margin: 1em;
 `
 export default function Overlay(props, title = [], res = []) {
+
+    const r = useRouter();
+    var { cnum } = r.query;
 
     return (props.trigger) ? (<div>
         <Background></Background>
