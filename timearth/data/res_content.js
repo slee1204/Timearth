@@ -6,34 +6,6 @@ export const PageTitle = "Today's Result";
 export const BtnText1 = "Start Over";
 export const BtnText2 = "See Challenges";
 
-// export var goodResults = "";
-// export var badResults = "";
-
-// export function showGoodResults(i, highestScore) {
-//     if ((i === 0) && (newArr[0] === highestScore)) {
-//         return goodResults[i]
-//     }
-//     if ((i === 1) && (newArr[1] === highestScore)) {
-//         return goodResults[i]
-//     }
-//     if ((i === 2) && (newArr[2] === highestScore)) {
-//         return goodResults[i]
-//     }
-//     if ((i === 3) && (newArr[3] === highestScore)) {
-//         return goodResults[i]
-//     }
-//     if ((i === 4) && (newArr[4] === highestScore)) {
-//         return goodResults[i]
-//     }
-//     if ((i === 5) && (newArr[5] === highestScore)) {
-//         return goodResults[i]
-//     }
-//     if ((i === 5) && (newArr[6] === highestScore)) {
-//         return goodResults[i]
-//     }
-// }
-
-
 export const HeaderTxt = {
     good: {
         txt: "Great Job!"
