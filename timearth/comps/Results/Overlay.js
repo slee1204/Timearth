@@ -63,19 +63,15 @@ const Button = styled.button`
 `
 export default function Overlay(props) {
 
-    const r = useRouter();
+ const scores = getScore();
 
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
             <Header>{HeaderTxt.good.txt}</Header>
             <img src="/transportation.svg"></img>
-            <SubHeader onChange={
-                () => {
-                   
-                }
-            }>{goodResults[0].title}</SubHeader>
-            <Desc>{goodResults[0].desc}</Desc>
+            <SubHeader>{goodResults[scores.high].title}</SubHeader>
+            <Desc>{goodResults[scores.high].desc}</Desc>
             <Button
                 className="primary large"
                 onClick={
