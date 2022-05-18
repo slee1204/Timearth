@@ -2,7 +2,6 @@ export const catData = [
     {
         title: "Transportation",
         src: "/transportation.svg"
-
     },
     {
         title: "Food",
@@ -25,4 +24,9 @@ export const catData = [
         title: "Shopping",
         src: "/shopping.svg"
     }
-]
+];
+
+export const logoData = {
+    src: "/logomark.svg"
+};
+
