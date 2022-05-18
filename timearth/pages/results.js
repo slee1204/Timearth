@@ -154,7 +154,7 @@ export default function Result() {
                     }
                 }>{BtnText2}
             </Button>
-            <Overlay title ={goodResults.title} trigger={OverlayOpen} setTrigger={setOverlayOpen1}/>
+            <Overlay trigger={OverlayOpen} setTrigger={setOverlayOpen1}/>
             {/* <Good trigger={OverlayOpen} setTrigger={setOverlayOpen1}></Good>
             <Bad trigger={Overlayopen} setTrigger={setOverlayOpen2}></Bad> */}
         </LayoutComp>

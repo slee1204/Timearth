@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import React, { useState } from "react";
-import { goodResults, badResults } from '../../data/res_content';
+import { goodResults, badResults, showGoodResults } from '../../data/res_content';
 import { HeaderTxt } from "../../data/res_content"
+import { getScore, showResults } from "../../data/question_content";
 
 const Background = styled.div`
     background-color: black;
@@ -60,22 +61,31 @@ const Desc = styled.h2`
 const Button = styled.button`
     margin: 1em;
 `
-export default function Overlay(props) {
-
-
+export default function Overlay(props, title = [], res = []) {
 
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
-            <Header>{HeaderTxt.good.txt}</Header>
-            <img src="/transportation.svg"></img>
-            <SubHeader></SubHeader>
-            <Desc></Desc>
+            {
+                res.map((o, i) => {
+                    <div>
+                    <Header>{HeaderTxt.good.txt}</Header>
+                    <img src="/transportation.svg"></img>
+                    <SubHeader onChange={
+                        () => {
+                            // showGoodResults(o, getScore())
+                        }
+                    }>{title}</SubHeader>
+                    <Desc></Desc>
+                </div>
+                })
+            }
             <Button
                 className="primary large"
                 onClick={
                     () => {
-                        props.setTrigger(false)
+                        props.setTrigger(false);
+
                     }
                 }
             >Close</Button>
