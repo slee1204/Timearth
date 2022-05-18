@@ -61,28 +61,21 @@ const Desc = styled.h2`
 const Button = styled.button`
     margin: 1em;
 `
-export default function Overlay(props, title = [], res = []) {
+export default function Overlay(props) {
 
     const r = useRouter();
-    var { cnum } = r.query;
 
     return (props.trigger) ? (<div>
         <Background></Background>
         <OverlayComp>
-            {
-                res.map((o, i) => {
-                    <div>
-                    <Header>{HeaderTxt.good.txt}</Header>
-                    <img src="/transportation.svg"></img>
-                    <SubHeader onChange={
-                        () => {
-                            // showGoodResults(o, getScore())
-                        }
-                    }>{title}</SubHeader>
-                    <Desc></Desc>
-                </div>
-                })
-            }
+            <Header>{HeaderTxt.good.txt}</Header>
+            <img src="/transportation.svg"></img>
+            <SubHeader onChange={
+                () => {
+                   
+                }
+            }>{goodResults[0].title}</SubHeader>
+            <Desc>{goodResults[0].desc}</Desc>
             <Button
                 className="primary large"
                 onClick={
