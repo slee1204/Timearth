@@ -1,7 +1,6 @@
 import CountUp from 'react-countup';
 
 var answers = [];
-// var newArr = [];
 
 export function storeChoice(cnum, score) {
     answers[cnum] = score;
@@ -44,7 +43,7 @@ export function getScore() {
     return {
         high: indexOfHighest,
         low: indexOfLowest
-    }
+    };
 }
 
 export function getResults(cnum, score) {
