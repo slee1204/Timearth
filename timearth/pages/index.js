@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { PageTitle, BtnText } from '../data/index_content'
 import { Hamburger, Menu } from "../comps/Menu";
-import React from "react";
+import React, { useState, useRef } from "react";
 import NavBar from "../comps/NavBar";
 import { logoData } from "../data/global_content";
 
@@ -27,9 +27,14 @@ const Logo = styled.img`
     width: 40%;
     height: 40%;
 
-    @media only screen and (min-width: 700px) {
-        width: 20%;
-        height: 20%;
+    @media only screen and (max-width: 320px) and (max-height: 800px){
+        width: 25%;
+        height: 25%;
+    }
+
+    @media only screen and (min-width: 1024px) and (min-height: 600px){
+        width: 15%;
+        height: 15%;
     }
 
     @media only screen and (min-height: 1024px) {
