@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-deploy": "next build && next export"
   },
   "dependencies": {
     "next": "12.1.5",
@@ -14,7 +15,8 @@
     "react-countup": "^6.2.0",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "react-overlay-component": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "8.13.0",
