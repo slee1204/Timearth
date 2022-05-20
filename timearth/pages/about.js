@@ -39,7 +39,7 @@ export default function About() {
                 <Hamburger open={open} setOpen={setOpen} />
                 <Menu open={open} setOpen={setOpen} />
             </div>
-            <img className="logomark" src="/logomark.svg" alt="Timearth Logomark" />
+            <img className="logomark" src="/Logomark.svg" alt="Timearth Logomark" />
             <h1>{PageTitle}</h1>
             <DescCont>
                 <h2>Our planet is in <Em>danger.</Em></h2>

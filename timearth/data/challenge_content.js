@@ -17,13 +17,13 @@ export const Challenges = [
     title: "Water Usage",
     desc: "Reduce your shower time by five minutes!",
     time: "25",
-    img: "/water.svg"
+    img: "/Water.svg"
 },
 {
     title: "Shopping Habits",
     desc: "Use reusable bags for your groceries today!",
     time: "35",
-    img: "/shopping.svg"
+    img: "/Shopping.svg"
 },
 {
     title: "Electricity",
@@ -35,6 +35,6 @@ export const Challenges = [
     title: "Waste",
     desc: "Bring a reusable bottle with you today!",
     time: "15",
-    img: "/waste.svg"
+    img: "/Waste.svg"
 }
 ]

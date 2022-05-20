@@ -274,7 +274,7 @@ export const qs = [
             },
         ],
         cat: "Transportation",
-        img: "/transportation.svg"
+        img: "/Transportation.svg"
     },
     {
         title: "How long is your commute?",
@@ -297,7 +297,7 @@ export const qs = [
             },
         ],
         cat: "Transportation",
-        img: "/transportation.svg"
+        img: "/Transportation.svg"
     },
     {
         title: "What kind of animal meat you eat most often for your meal?",
@@ -320,7 +320,7 @@ export const qs = [
             },
         ],
         cat: "Eating Habits",
-        img: "/food.svg"
+        img: "/Food.svg"
     },
 
     {
@@ -344,7 +344,7 @@ export const qs = [
             },
         ],
         cat: "Eating Habits",
-        img: "/food.svg"
+        img: "/Food.svg"
     },
     {
         title: "How often do you take showers?",
@@ -367,7 +367,7 @@ export const qs = [
             },
         ],
         cat: "Water Usage",
-        img: "/water.svg"
+        img: "/Water.svg"
     },
     {
         title: "How long are your showers?",
@@ -390,7 +390,7 @@ export const qs = [
             },
         ],
         cat: "Water Usage",
-        img: "/water.svg"
+        img: "/Water.svg"
     },
     {
         title: "How much time did you spend on your devices today?",
@@ -413,7 +413,7 @@ export const qs = [
             },
         ],
         cat: "Electricity Usage",
-        img: "/electricity.svg"
+        img: "/Electricity.svg"
     },
     {
         title: "How much time do you spend with the lights on?",
@@ -436,7 +436,7 @@ export const qs = [
             },
         ],
         cat: "Electricity Usage",
-        img: "/electricity.svg"
+        img: "/Electricity.svg"
     },
     {
         title: "How much waste did you produce today?",
@@ -459,7 +459,7 @@ export const qs = [
             },
         ],
         cat: "Waste",
-        img: "/waste.svg"
+        img: "/Waste.svg"
     },
     {
         title: "How much of your waste did you recycle today?",
@@ -482,7 +482,7 @@ export const qs = [
             },
         ],
         cat: "Waste",
-        img: "/waste.svg"
+        img: "/Waste.svg"
     },
     {
         title: "What kind of shopping bags do you use most frequently?",
@@ -501,7 +501,7 @@ export const qs = [
             },
         ],
         cat: "Shopping Habits",
-        img: "/shopping.svg"
+        img: "/Shopping.svg"
     },
     {
         title: "How often do you receive paper receipts?",
@@ -524,6 +524,6 @@ export const qs = [
             },
         ],
         cat: "Shopping Habits",
-        img: "/shopping.svg"
+        img: "/Shopping.svg"
     },
 ];
