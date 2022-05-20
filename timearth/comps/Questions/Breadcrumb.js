@@ -4,28 +4,39 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const BreadcrumbComp = styled.div`
-  display: flex;
-  width: 330px;
-  height: 57px;
-  justify-content: space-between;
-  align-items: flex-end;
+    display: flex;
+    width: 330px;
+    height: 57px;
+    justify-content: space-between;
+    align-items: flex-end;
 `;
+
 const Category = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 46px;
-  height: 55px;
+    display: flex;
+    flex-direction: column;
+    width: 46px;
+    height: 55px; 
 `;
+
 const CatImg = styled.img`
-  width: 100%;
-  height: 100%;
-  visibility: ${props => props.visibility || "hidden"};
+    width: 100%;
+    height: 100%;
+    visibility: ${props => props.visibility || "hidden"};
+
+    @media only screen and (min-width: 280px) and (max-height: 800px){
+        width: 80%;
+    }  
 `;
+
 const Bar = styled.div`
-  width: 46px;
-  height: 10px;
-  background-color: ${props => props.color || "#C4C4C4"};
-  `;
+    width: 46px;
+    height: 10px;
+    background-color: ${props => props.color || "#C4C4C4"};
+
+    @media only screen and (min-width: 280px) and (max-height: 800px){
+        width: 90%;
+    }  
+`;
 
 const breadcomp_data = {
     inactive: {

@@ -17,3 +17,29 @@ export const fadeOut = keyframes`
         opacity: 0;
     }
 `
+
+export const slideInLeft = keyframes`
+    from {
+        opacity: 0;
+        left: -50px;
+        position: relative;
+    }
+    to {
+        opacity: 1;
+        left: 0;
+        position: relative;
+    }
+`
+
+export const slideInRight = keyframes`
+    from {
+        opacity: 0;
+        right: -50px;
+        position: relative;
+    }
+    to {
+        opacity: 1;
+        right: 0;
+        position: relative;
+    }
+`
