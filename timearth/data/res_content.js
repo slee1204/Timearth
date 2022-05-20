@@ -54,7 +54,7 @@ export const badResults = [
         desc: "With amount of water from 5 more minutes of shower, you can do laundry for 10 more minutes or flush the toilet three times"
     },
     {
-        title: "idkidkidk",
+        title: "There was more electricity usage than usual",
         desc: "Be aware of Phantom Energy in your home while you are unaware of them. They account for about 10 % of household energy consumption"
     },
     {
