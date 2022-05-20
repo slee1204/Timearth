@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import Breadcrumb from "../comps/Questions/Breadcrumb";
 import Options from "../comps/Questions/Options";
-import { getScore, getResults, qs, storeChoice } from "../data/question_content"
+import { getResults, qs } from "../data/question_content"
 import Overlay from "../comps/Questions/Overlay";
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, HiChevronRight } from 'react-icons/fa';
@@ -11,8 +11,7 @@ export const Layout = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-center: center;
-    margin-top: 3em;
+    width: 90vw;
 `
 
 export const BackButton = styled.div`
@@ -29,7 +28,7 @@ export const SkipButton = styled.div`
     font-weight: 700;
     font-size: 18px;
     cursor: pointer;
-    color: #C4C4C4;
+    color: #A0A1A2;
 `
 
 const StyledIcon = styled(FaChevronLeft)`
@@ -38,15 +37,16 @@ const StyledIcon = styled(FaChevronLeft)`
 `
 
 const BtnLarge = styled.button`
-    background-color: ${props => props.bg || "#DADADA"};;
+    background-color: ${props => props.bg || "#DADADA"};
     position: absolute;
     bottom: 15.88%;
 `
 
-export const TopBtns = styled.div`
+ const TopBtns = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 2em;
 `
 
 const btn_data = {
@@ -57,7 +57,6 @@ const btn_data = {
         bg: "#FFFFFF",
     }
 }
-
 
 export default function Questions() {
 
@@ -73,7 +72,7 @@ export default function Questions() {
                 type: qs[0].cat
             }
         })
-    }, [])
+    }, []);
 
     var { qnum, type } = r.query;
 
@@ -109,12 +108,11 @@ export default function Questions() {
                 q={qs[qnum].title}
                 arr={qs[qnum].ops}
                 c={qs[qnum].cat}
-                active ={true}
             />
             {
                 Number(qnum) < qs.length - 1 &&
                 <BtnLarge
-                    bg={btn_data.inactive.bg}
+                    bg={btn_data.active.bg}
                     onClick={
                         () => {
                             r.push({
@@ -123,7 +121,7 @@ export default function Questions() {
                                     qnum: Number(qnum) + 1 > qs.length - 1 ? qs.length - 1 : Number(qnum) + 1,
                                     type: qs[Number(qnum) + 1].cat
                                 }
-                            })
+                            });
                         }
                     }
 
@@ -131,7 +129,7 @@ export default function Questions() {
             }
             {
                 Number(qnum) >= qs.length - 1 &&
-                <BtnLarge
+                <BtnLarge bg={btn_data.active.bg}
                     onClick={
                         () => {
                             setOverlayOpen(true)

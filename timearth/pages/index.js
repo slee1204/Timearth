@@ -2,15 +2,19 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { PageTitle, BtnText } from '../data/index_content'
 import { Hamburger, Menu } from "../comps/Menu";
-import React from "react";
+import React, { useState, useRef } from "react";
 import NavBar from "../comps/NavBar";
+import { logoData } from "../data/global_content";
 
 const LayoutComp = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 6.5em;
+    position: absolute;
+    top: 40%;
+    transform: translate(0, -40%);
+    width: 90%;
 `
 
 const Em = styled.span`
@@ -19,22 +23,44 @@ const Em = styled.span`
     font-weight: 700;
 `
 
+const Logo = styled.img`
+    width: 40%;
+    height: 40%;
+
+    @media only screen and (max-width: 320px) and (max-height: 800px){
+        width: 25%;
+        height: 25%;
+    }
+
+    @media only screen and (min-width: 1024px) and (min-height: 600px){
+        width: 15%;
+        height: 15%;
+    }
+
+    @media only screen and (min-height: 1024px) {
+        width: 30%;
+        height: 30%;
+    }
+`
+
 export default function Home() {
 
-    const [open, setOpen] = React.useState(false);
-    const node = React.useRef();
+    const [open, setOpen] = useState(false);
+    const node = useRef();
 
     const r = useRouter();
     return (
-        <LayoutComp>
+        <div className="setting">
             <NavBar />
             <div className="menu" ref={node}>
                 <Hamburger open={open} setOpen={setOpen} />
                 <Menu open={open} setOpen={setOpen} />
             </div>
-            <img className="logomark" src="/logomark.svg" alt="Timearth Logomark" />
-            <h1>{PageTitle}</h1>
-            <h4>Log your daily activities and see how many <Em>Earth minutes</Em> you have saved today!</h4>
+            <LayoutComp>
+                <Logo src={logoData.src} alt="Timearth Logomark" />
+                <h1>{PageTitle}</h1>
+                <h4>Log your daily activities and see how many <Em>Earth minutes</Em> you have saved today!</h4>
+            </LayoutComp>
             <div className="background-shape" />
             <button
                 className="default"
@@ -48,6 +74,6 @@ export default function Home() {
                     }
                 }>{BtnText}
             </button>
-        </LayoutComp>
+        </div>
     )
 }
