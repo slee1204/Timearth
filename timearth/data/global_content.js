@@ -30,3 +30,6 @@ export const logoData = {
     src: "/logomark.svg"
 };
 
+export const color = {
+    primaryOrange: "#FF9042"
+}
