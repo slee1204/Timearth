@@ -6,7 +6,9 @@ const nextConfig = {
   }
 }
 
-module.exports = {
+const withImages = require('next-images')
+
+module.exports = withImages(),{
   
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -16,5 +18,3 @@ module.exports = {
   nextConfig
 }
 
-const withImages = require('next-images')
-module.exports = withImages()
